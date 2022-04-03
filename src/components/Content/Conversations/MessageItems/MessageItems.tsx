@@ -1,12 +1,7 @@
 import css from "../Conversations.module.css";
 import React from "react";
+import {MessageItemType} from "../../../../myRedux/state";
 
-export type MessageItemType = {
-    id: number
-    messageText: string
-    messageDate: string
-    messageTime: string
-}
 
 export type MessageItemArrayPropsType = { messagesItemArray: Array<MessageItemType> }
 

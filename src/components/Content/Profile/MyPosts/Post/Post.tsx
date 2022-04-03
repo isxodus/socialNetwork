@@ -1,7 +1,8 @@
 import React from "react";
 import css from "./Post.module.css";
 
-type postProps = {
+export type postProps = {
+    id: number
     text: string
 }
 

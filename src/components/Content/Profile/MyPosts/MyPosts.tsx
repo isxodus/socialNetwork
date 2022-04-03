@@ -1,13 +1,10 @@
 import React from "react";
 import css from "./MyPosts.module.css";
 import {Post} from "./Post/Post";
+import {ProfilePostArrayType} from "../../../../myRedux/state";
 
-
-export function MyPosts() {
+export function MyPosts(props: ProfilePostArrayType) {
     return <div className={css.myPosts}>
-        <Post text={"ts rocks"}/>
-        <Post text={"doing stuff"}/>
-        <Post text={"i am good"}/>
-        <Post text={"hello world"}/>
+        {props.profilePostsArray.map((el) => <Post id={el.id} text={el.text}/>)}
     </div>
 }
