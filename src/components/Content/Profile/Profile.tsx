@@ -1,7 +1,11 @@
 import React from "react";
 import css from "./Profile.module.css";
 import {MyPosts} from "./MyPosts/MyPosts";
+import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
 
 export function Profile() {
-    return <div><MyPosts/></div>
+    return <div>
+        <ProfileInfo/>
+        <MyPosts/>
+    </div>
 }

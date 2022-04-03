@@ -1,0 +1,20 @@
+.conversations {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+
+.conversationItems {
+
+}
+
+.messageItems {
+
+}
+
+.messageItem {
+
+}
+
+messageItemActive {
+
+}
