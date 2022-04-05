@@ -1,3 +1,4 @@
+import {reRenderEntireTree} from './render'
 //profile info types
 export type ProfileInfoType = {
     imageLink: string
@@ -10,6 +11,8 @@ export type ProfilePostType = {
 }
 export type ProfilePostArrayType = {
     profilePostsArray: Array<ProfilePostType>
+    newPostText:string
+    profileAddPost: Function
 }
 export type ProfilePageType = {
     profileInfo: ProfileInfoType
@@ -34,6 +37,20 @@ export type ConversationInfoType = {
 export type StateType = {
     profilePage: ProfilePageType
     conversationsGlobalInfo: Array<ConversationInfoType>
+
+}
+export type GlobalStateType = {
+    state:StateType
+}
+//functions
+export const profileAddPost = (postMessage: string) =>{
+    const newPost:ProfilePostType = {
+        id: state.profilePage.profilePosts.profilePostsArray.length + 1,
+        text: postMessage
+    }
+    state.profilePage.profilePosts.profilePostsArray.push(newPost)
+    reRenderEntireTree(globalState)
+    // console.log(state.profilePage.profilePosts.profilePostsArray)
 }
 
 export let state: StateType = {
@@ -58,7 +75,9 @@ export let state: StateType = {
                     id: 4,
                     text: "hello world!!!"
                 }
-            ]
+            ],
+            newPostText: 'fill something',
+            profileAddPost: profileAddPost
         }
     },
     conversationsGlobalInfo: [
@@ -130,5 +149,9 @@ export let state: StateType = {
                 messageDate: "03.03.2022",
                 messageTime: "10:45:00"
             }]
-        }]
+        }],
+
+}
+export let globalState: GlobalStateType = {
+    state: state
 }

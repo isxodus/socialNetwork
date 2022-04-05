@@ -10,9 +10,10 @@ export function Content(props: StateType) {
         <Routes>
             <Route path="/" element={<Profile profileInfo={props.profilePage.profileInfo}
                                               profilePosts={props.profilePage.profilePosts}/>}/>
+            {/*<Route path="/profile/*" element={<Profile />}/>*/}
             <Route path="/profile/*"
                    element={<Profile profileInfo={props.profilePage.profileInfo}
-                                     profilePosts={props.profilePage.profilePosts}/>}/>
+                                     profilePosts={props.profilePage.profilePosts} />}/>
             <Route path="/conversations/*"
                    element={<Conversations conversationsArray={props.conversationsGlobalInfo}/>}/>
         </Routes>

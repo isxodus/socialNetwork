@@ -4,19 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fef7e9c1-607a-45f4-9203-559ae378a4d7" name="Changes" comment="added components with throwing data from parent Component">
-      <change afterPath="$PROJECT_DIR$/src/myRedux/state.ts" afterDir="false" />
+    <list default="true" id="fef7e9c1-607a-45f4-9203-559ae378a4d7" name="Changes" comment="implemented my own state">
+      <change afterPath="$PROJECT_DIR$/src/myRedux/render.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/myRedux/render.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.test.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Content/Content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Content/Content.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Content/Conversations/Conversations.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Content/Conversations/Conversations.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Content/Conversations/MessageItems/MessageItems.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Content/Conversations/MessageItems/MessageItems.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Content/Profile/MyPosts/MyPosts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Content/Profile/MyPosts/MyPosts.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Content/Profile/MyPosts/Post/Post.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Content/Profile/MyPosts/Post/Post.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Content/Profile/Profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Content/Profile/Profile.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Content/Profile/ProfileInfo/ProfileInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Content/Profile/ProfileInfo/ProfileInfo.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/myRedux/state.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/myRedux/state.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +48,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="27HI7HsWVWLnimuZU0FVQR7UtSW" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -64,7 +62,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/Content/Conversations/MessageItems" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/myRedux" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -73,13 +71,31 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="rearrange.code.on.save" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
-    <property name="ts.external.directory.path" value="D:\socialNetworkTypeScript\node_modules\typescript\lib" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2021.3.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\socialNetworkTypeScript\src\myRedux" />
       <recent name="D:\socialNetworkTypeScript\src\components\Content\Conversations\MessageItems" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.start" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -89,7 +105,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1648970420879</updated>
-      <workItem from="1648970423038" duration="21169000" />
+      <workItem from="1648970423038" duration="22608000" />
+      <workItem from="1649180666447" duration="9309000" />
     </task>
     <task id="LOCAL-00001" summary="added components with throwing data from parent Component">
       <created>1648984058153</created>
@@ -98,7 +115,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648984058153</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="implemented my own state">
+      <created>1648998635398</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1648998635398</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -117,7 +141,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added components with throwing data from parent Component" />
-    <option name="LAST_COMMIT_MESSAGE" value="added components with throwing data from parent Component" />
+    <MESSAGE value="implemented my own state" />
+    <option name="LAST_COMMIT_MESSAGE" value="implemented my own state" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
