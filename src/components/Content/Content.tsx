@@ -1,21 +1,25 @@
 import React from "react";
 import {Routes, Route} from 'react-router-dom';
-import css from "./Content.module.css";
+// import css from "./Content.module.css";
 import {Profile} from "./Profile/Profile";
 import {Conversations} from "./Conversations/Conversations";
-import {StateType} from "../../myRedux/state";
+import {ActionType, StateType} from "../../myRedux/state";
 
-export function Content(props: StateType) {
+type ContentType = {
+    data: StateType
+    dispatch: (action: ActionType) => void
+}
+
+export function Content(props: ContentType) {
     return <div>
         <Routes>
-            <Route path="/" element={<Profile profileInfo={props.profilePage.profileInfo}
-                                              profilePosts={props.profilePage.profilePosts}/>}/>
-            {/*<Route path="/profile/*" element={<Profile />}/>*/}
+            <Route path="/" element={<Profile data={props.data.profilePage}
+                                              dispatch={props.dispatch}/>}/>
             <Route path="/profile/*"
-                   element={<Profile profileInfo={props.profilePage.profileInfo}
-                                     profilePosts={props.profilePage.profilePosts} />}/>
+                   element={<Profile data={props.data.profilePage}
+                                     dispatch={props.dispatch}/>}/>
             <Route path="/conversations/*"
-                   element={<Conversations conversationsArray={props.conversationsGlobalInfo}/>}/>
+                   element={<Conversations data={props.data.conversationsPage}/>}/>
         </Routes>
     </div>
 }

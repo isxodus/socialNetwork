@@ -1,20 +1,16 @@
 import React from "react";
 import css from "./Conversations.module.css";
-import {ConversationInfoType} from "../../../myRedux/state";
-import {ConversationItems} from "./ConversationItems/ConversationItems";
+import {ConversationsPageType} from "../../../myRedux/state";
+import {Conversationalists} from "./ConversationItems/Conversationalists";
 import {MessageItems} from "./MessageItems/MessageItems";
 
-type ConversationArrayPropsType = { conversationsArray: Array<ConversationInfoType> }
-
-function getUserInfo(arr: Array<ConversationInfoType>) {
-    console.log(arr)
-    return arr.map((el) => el.conversationalistInfo)
+type ConversationsType = {
+    data: ConversationsPageType
 }
 
-export function Conversations(props: ConversationArrayPropsType) {
+export function Conversations(props: ConversationsType) {
     return <div className={css.conversations}>
-        <ConversationItems conversationsArray={getUserInfo(props.conversationsArray)}/>
-        {props.conversationsArray[0].messageArray ?
-            <MessageItems messagesItemArray={props.conversationsArray[0].messageArray}/> : "0 "}
+        <Conversationalists data={props.data.conversations}/>
+        {props.data.conversations[0].messageArray ? <MessageItems data={props.data.conversations[0].messageArray}/> : "0 "}
     </div>
 }

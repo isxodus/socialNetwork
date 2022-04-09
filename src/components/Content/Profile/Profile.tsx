@@ -1,16 +1,18 @@
 import React from "react";
-import css from "./Profile.module.css";
+// import css from "./Profile.module.css";
 import {MyPosts} from "./MyPosts/MyPosts";
-import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
-import {ProfilePageType} from "../../../myRedux/state";
+import {ProfileHeader} from "./ProfileInfo/ProfileHeader";
+import {ActionType, ProfilePageType} from "../../../myRedux/state";
 
-export function Profile(props: ProfilePageType) {
+type ProfileType = {
+    data: ProfilePageType
+    dispatch: (action: ActionType) => void
+}
+
+export function Profile(props: ProfileType) {
     return <div>
-        <ProfileInfo imageLink={props.profileInfo.imageLink} altText={props.profileInfo.altText}
-                     myInfo={props.profileInfo.myInfo}/>
-        <MyPosts profilePostsArray={props.profilePosts.profilePostsArray}
-                 profileAddPost={props.profilePosts.profileAddPost}
-                 profileChangePostHandler={props.profilePosts.profileChangePostHandler}
-                 newPostText={props.profilePosts.newPostText}/>
+        <ProfileHeader data={props.data.profileInfo}/>
+        <MyPosts data={props.data.profilePosts}
+                 dispatch={props.dispatch}/>
     </div>
 }

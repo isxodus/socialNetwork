@@ -4,20 +4,22 @@ import "./App.css"
 import {Header} from "./components/Header/Header";
 import {NavBar} from "./components/NavBar/NavBar";
 import {Content} from "./components/Content/Content";
-import {StateType} from "./myRedux/state";
+import {ActionType, StateType} from "./myRedux/state";
 
+type AppType = {
+    data: StateType
+    dispatch: (action: ActionType) => void
+}
 
-const App = (props: StateType) => {
+export const App = (props: AppType) => {
     return (
         <BrowserRouter>
             <div className={"app-wrapper"}>
                 <Header/>
                 <NavBar/>
-                <Content profilePage={props.profilePage}
-                         conversationsGlobalInfo={props.conversationsGlobalInfo}/>
+                <Content data={props.data}
+                         dispatch={props.dispatch}/>
             </div>
         </BrowserRouter>
     );
 }
-
-export default App;
