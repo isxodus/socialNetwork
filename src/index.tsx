@@ -1,12 +1,29 @@
-// import React from 'react';
-// import ReactDOM from 'react-dom';
-// import './index.css';
-// import App from './App';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
 // import reportWebVitals from './reportWebVitals';
-import {reRenderEntireTree} from './myRedux/render'
-import {globalState} from './myRedux/state'
+import {store, subscribe, StateType} from './myRedux/state'
 
-reRenderEntireTree(globalState)
+function reRenderEntireTree(gottenState: StateType) {
+    ReactDOM.render(
+        <React.StrictMode>
+            <App profilePage={gottenState.profilePage}
+                 conversationsGlobalInfo={gottenState.conversationsGlobalInfo}
+
+                // state={globalStore.getState().}
+                // reRenderEntireTree={globalStore.reRenderEntireTree}
+                // profileAddPost={globalStore.profileAddPost}
+                // profileChangePostHandler={globalStore.profileChangePostHandler}
+                // getState={globalStore.getState()}
+            />
+        </React.StrictMode>,
+        document.getElementById('root')
+    );
+}
+
+reRenderEntireTree(store.getState())
+subscribe(reRenderEntireTree)
 
 // ReactDOM.render(
 //     <React.StrictMode>

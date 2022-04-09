@@ -4,16 +4,17 @@ import "./App.css"
 import {Header} from "./components/Header/Header";
 import {NavBar} from "./components/NavBar/NavBar";
 import {Content} from "./components/Content/Content";
-import {GlobalStateType} from "./myRedux/state";
+import {StateType} from "./myRedux/state";
 
-const App = (props:GlobalStateType) => {
+
+const App = (props: StateType) => {
     return (
         <BrowserRouter>
             <div className={"app-wrapper"}>
                 <Header/>
                 <NavBar/>
-                <Content profilePage={props.state.profilePage}
-                         conversationsGlobalInfo={props.state.conversationsGlobalInfo}/>
+                <Content profilePage={props.profilePage}
+                         conversationsGlobalInfo={props.conversationsGlobalInfo}/>
             </div>
         </BrowserRouter>
     );

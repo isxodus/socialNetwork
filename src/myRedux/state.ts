@@ -1,4 +1,6 @@
-import {reRenderEntireTree} from './render'
+////
+//EXPORT
+////
 //profile info types
 export type ProfileInfoType = {
     imageLink: string
@@ -11,8 +13,9 @@ export type ProfilePostType = {
 }
 export type ProfilePostArrayType = {
     profilePostsArray: Array<ProfilePostType>
-    newPostText:string
-    profileAddPost: Function
+    newPostText: string
+    profileAddPost: () => void
+    profileChangePostHandler: (editedText: string) => void
 }
 export type ProfilePageType = {
     profileInfo: ProfileInfoType
@@ -33,27 +36,39 @@ export type ConversationInfoType = {
     conversationalistInfo: ConversationalistInfoType
     messageArray?: Array<MessageItemType>
 }
-//global state
+//global state type
 export type StateType = {
     profilePage: ProfilePageType
     conversationsGlobalInfo: Array<ConversationInfoType>
 
 }
-export type GlobalStateType = {
-    state:StateType
-}
+
+
+////
+//PRIVATE
+////
 //functions
-export const profileAddPost = (postMessage: string) =>{
-    const newPost:ProfilePostType = {
+const getState = () => {
+    // debugger
+    return state
+}
+const profileAddPost = () => {
+    const newPost: ProfilePostType = {
         id: state.profilePage.profilePosts.profilePostsArray.length + 1,
-        text: postMessage
+        text: state.profilePage.profilePosts.newPostText
     }
     state.profilePage.profilePosts.profilePostsArray.push(newPost)
-    reRenderEntireTree(globalState)
-    // console.log(state.profilePage.profilePosts.profilePostsArray)
+    state.profilePage.profilePosts.newPostText = 'fill another post'
+    reRenderEntireTree(state)
 }
-
-export let state: StateType = {
+const profileChangePostHandler = (editedText: string) => {
+    state.profilePage.profilePosts.newPostText = editedText
+    reRenderEntireTree(state)
+}
+let reRenderEntireTree = (globalState: StateType) => {
+}
+//state
+let state: StateType = {
     profilePage: {
         profileInfo: {
             imageLink: "https://media.istockphoto.com/photos/financial-center-picture-id507076592?k=20&m=507076592&s=612x612&w=0&h=Jmctr_haN1UyZsferwuczs624R2Q3tro_WmQifotvT4=",
@@ -77,14 +92,15 @@ export let state: StateType = {
                 }
             ],
             newPostText: 'fill something',
-            profileAddPost: profileAddPost
+            profileAddPost: profileAddPost,
+            profileChangePostHandler: profileChangePostHandler
         }
     },
     conversationsGlobalInfo: [
         {
             conversationalistInfo: {
                 id: 1,
-                name: "Kolay"
+                name: "Kolya"
             },
             messageArray: [{
                 id: 1,
@@ -114,7 +130,7 @@ export let state: StateType = {
             },
             messageArray: [{
                 id: 1,
-                messageText: "wazup",
+                messageText: "wazzzup",
                 messageDate: "03.03.2022",
                 messageTime: "12:00:00"
             }, {
@@ -152,6 +168,18 @@ export let state: StateType = {
         }],
 
 }
-export let globalState: GlobalStateType = {
-    state: state
+
+
+//SUBSCRIBE
+export const subscribe = (observer: (globalState: StateType) => void) => {
+    reRenderEntireTree = observer
+}
+//STORE
+export type GlobalStoreType = {
+    //_state: StateType,
+    getState: () => StateType
+}
+export let store: GlobalStoreType = {
+    //_state: state,
+    getState: getState
 }
