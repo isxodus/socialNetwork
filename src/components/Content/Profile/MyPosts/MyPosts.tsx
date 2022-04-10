@@ -1,7 +1,7 @@
 import React, {ChangeEvent} from "react";
 import css from "./MyPosts.module.css";
 import {Post} from "./Post/Post";
-import {ProfileMyPostArrayType, ProfileMyPostType} from "../../../../myRedux/state";
+import {ProfileMyPostArrayType, ProfileMyPostType} from "../../../../redux/reduxStore";
 
 type MyPostsPostPropsType = {
     posts: Array<ProfileMyPostType>
@@ -11,12 +11,6 @@ type MyPostsPostPropsType = {
 }
 
 export function MyPosts(props: MyPostsPostPropsType) {
-    // let newPostElement: React.RefObject<HTMLTextAreaElement> = React.createRef();
-    // const onChange = () => {
-    //     const currentValue: string= newPostElement.current ? newPostElement.current.value : ''
-    //     props.editPostTextHandler(newPostElement.currenturrentValue)
-    // }
-
     return <div className={css.myPosts}>
         <div>
             <textarea onChange={props.editPostTextHandler}

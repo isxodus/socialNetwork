@@ -3,7 +3,7 @@ import {Routes, Route} from 'react-router-dom';
 // import css from "./Content.module.css";
 import {Profile} from "./Profile/Profile";
 import {Conversations} from "./Conversations/Conversations";
-import {ActionType, StateType} from "../../myRedux/state";
+import {ActionType, StateType} from "../../redux/reduxStore";
 
 type ContentType = {
     data: StateType

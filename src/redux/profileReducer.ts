@@ -1,4 +1,4 @@
-import {ActionType, ProfileMyPostType, ProfilePageType} from "./state";
+import {ActionType, ProfileMyPostType, ProfilePageType} from "./reduxStore";
 
 //
 let initialReducerState: ProfilePageType = {

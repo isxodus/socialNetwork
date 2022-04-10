@@ -1,7 +1,7 @@
 import React, {ChangeEvent} from "react";
-import {ActionType, ProfileMyPostArrayType} from "../../../../myRedux/state";
 import {MyPosts} from "./MyPosts";
-import {addPostActionCreator, onPostChangeHandlerActionCreator} from "../../../../myRedux/profileReducer";
+import {addPostActionCreator, onPostChangeHandlerActionCreator} from "../../../../redux/profileReducer";
+import {ActionType, ProfileMyPostArrayType} from "../../../../redux/reduxStore";
 
 type MyPostsPostPropsType = {
     data: ProfileMyPostArrayType

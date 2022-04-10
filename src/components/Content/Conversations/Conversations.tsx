@@ -1,8 +1,8 @@
 import React from "react";
 import css from "./Conversations.module.css";
-import {ActionType, ConversationsPageType} from "../../../myRedux/state";
 import {Conversationalists} from "./ConversationItems/Conversationalists";
 import {MessageItems} from "./MessageItems/MessageItems";
+import {ActionType, ConversationsPageType} from "../../../redux/reduxStore";
 
 type ConversationsPropsType = {
     data: ConversationsPageType

@@ -1,12 +1,8 @@
 import css from "../Conversations.module.css";
 import React from "react";
-import {
-    ActionType,
-    ConversationsPageType,
-    ConversationType,
-} from "../../../../myRedux/state";
 import {MessageItem} from "./MessageItem/MessageItem";
-import {addMessageActionCreator, onMessageChangeHandlerActionCreator} from "../../../../myRedux/conversationsReducer";
+import {addMessageActionCreator, onMessageChangeHandlerActionCreator} from "../../../../redux/conversationsReducer";
+import {ActionType, ConversationsPageType, ConversationType} from "../../../../redux/reduxStore";
 
 export type MessageItemsPropsType = {
     data: Array<ConversationType>

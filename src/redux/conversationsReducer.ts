@@ -1,4 +1,4 @@
-import {ActionType, ConversationsPageType} from "./state";
+import {ActionType, ConversationsPageType} from "./reduxStore";
 
 //
 let initialReducerState: ConversationsPageType = {

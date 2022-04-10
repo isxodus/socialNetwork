@@ -1,7 +1,7 @@
 import css from "../Conversations.module.css";
 import React from "react";
 import {NavLink} from "react-router-dom";
-import {ConversationalistType, ConversationType} from "../../../../myRedux/state";
+import {ConversationalistType, ConversationType} from "../../../../redux/reduxStore";
 
 
 type ConversationItemsType = {
