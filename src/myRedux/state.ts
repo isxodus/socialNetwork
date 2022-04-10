@@ -1,5 +1,8 @@
 //TYPES
 //profile info types
+import {profileReducer} from "./profileReducer";
+import {conversationsReducer} from "./conversationsReducer";
+
 export type ProfileInfoType = {
     imageLink: string
     altText: string
@@ -36,6 +39,9 @@ export type ConversationType = {
 }
 export type ConversationsPageType = {
     conversations: Array<ConversationType>
+    //conversationalists
+    //currentConversation
+    newMessageText: string
 }
 //global state type
 export type StateType = {
@@ -43,9 +49,9 @@ export type StateType = {
     conversationsPage: ConversationsPageType
 }
 
-//STORE
+//STORE TYPE
 export type ActionType = {
-    type: string
+    type: "ADD-POST" | "CHANGE-POST-TEXT" | "ADD-MESSAGE" | "CHANGE-MESSAGE-TEXT"
     newText?: string
 }
 export type GlobalStoreType = {
@@ -55,6 +61,7 @@ export type GlobalStoreType = {
     getState: () => StateType
     dispatch: (action: ActionType) => void
 }
+//STORE
 export let store: GlobalStoreType = {
     _state: {
         profilePage: {
@@ -152,9 +159,9 @@ export let store: GlobalStoreType = {
                         messageDate: "03.03.2022",
                         messageTime: "10:45:00"
                     }]
-                }]
+                }],
+            newMessageText: ''
         },
-
     },
     _callSubscriber() {
     },
@@ -165,17 +172,10 @@ export let store: GlobalStoreType = {
         return this._state
     },
     dispatch(action) {
-        if (action.type === 'ADD-POST') {
-            const newPost: ProfileMyPostType = {
-                id: this._state.profilePage.profilePosts.profilePosts.length + 1,
-                text: this._state.profilePage.profilePosts.newPostText
-            }
-            this._state.profilePage.profilePosts.profilePosts.push(newPost)
-            this._state.profilePage.profilePosts.newPostText = 'fill another post'
-            this._callSubscriber(this._state)
-        } else if (action.type === 'CHANGE-POST-TEXT') {
-            this._state.profilePage.profilePosts.newPostText = action.newText ? action.newText : ''
-            this._callSubscriber(this._state)
-        }
+        profileReducer(this._state.profilePage, action)
+        conversationsReducer(this._state.conversationsPage, action)
+        this._callSubscriber(this._state)
     }
 }
+
+

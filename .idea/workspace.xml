@@ -4,25 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c6ee798a-8930-4021-81c9-786f5c313047" name="Changes" comment="another step to myRedux with store">
-      <change afterPath="$PROJECT_DIR$/src/components/Content/Conversations/ConversationItems/Conversationalists.tsx" afterDir="false" />
+    <list default="true" id="c6ee798a-8930-4021-81c9-786f5c313047" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/Content/Conversations/MessageItems/MessageItem/MessageItem.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Content/Conversations/MessageItems/MessageItem/MessageItem.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/myRedux/conversationsReducer.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/myRedux/profileReducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.test.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Content/Content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Content/Content.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Content/Conversations/ConversationItems/ConversationItems.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Content/Conversations/Conversations.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Content/Conversations/Conversations.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Content/Conversations/MessageItems/MessageItems.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Content/Conversations/MessageItems/MessageItems.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Content/Profile/MyPosts/MyPosts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Content/Profile/MyPosts/MyPosts.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Content/Profile/Profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Content/Profile/Profile.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Content/Profile/ProfileInfo/ProfileInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Content/Profile/ProfileInfo/ProfileHeader.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/myRedux/state.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/myRedux/state.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+      </list>
+    </option>
   </component>
   <component name="FormatOnSaveOptions">
     <option name="myRunOnSave" value="true" />
@@ -45,6 +50,9 @@
     <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="27Yp0MUyiWrrb8earGpg10uMWmR" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />

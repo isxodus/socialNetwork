@@ -19,7 +19,8 @@ export function Content(props: ContentType) {
                    element={<Profile data={props.data.profilePage}
                                      dispatch={props.dispatch}/>}/>
             <Route path="/conversations/*"
-                   element={<Conversations data={props.data.conversationsPage}/>}/>
+                   element={<Conversations data={props.data.conversationsPage}
+                                           dispatch={props.dispatch}/>}/>
         </Routes>
     </div>
 }

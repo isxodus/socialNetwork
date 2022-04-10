@@ -2,19 +2,21 @@ import React from "react";
 import css from "./MyPosts.module.css";
 import {Post} from "./Post/Post";
 import {ActionType, ProfileMyPostArrayType} from "../../../../myRedux/state";
+import {addPostActionCreator, onPostChangeHandlerActionCreator} from "../../../../myRedux/profileReducer";
 
 type MyPostsPostPropsType = {
     data: ProfileMyPostArrayType
     dispatch: (action: ActionType) => void
 }
 
+
 export function MyPosts(props: MyPostsPostPropsType) {
     let newPostElement: React.RefObject<HTMLTextAreaElement> = React.createRef();
     let onAddPostHandler = () => {
-        props.dispatch({type: 'ADD-POST'})
+        props.dispatch(addPostActionCreator())
     }
     let onPostChangeHandler = () => {
-        newPostElement.current && props.dispatch({type: 'CHANGE-POST-TEXT', newText: newPostElement.current.value})
+        newPostElement.current && props.dispatch(onPostChangeHandlerActionCreator(newPostElement.current.value))
     }
 
     return <div className={css.myPosts}>
