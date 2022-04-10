@@ -4,17 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c6ee798a-8930-4021-81c9-786f5c313047" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Content/Conversations/MessageItems/MessageItem/MessageItem.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Content/Conversations/MessageItems/MessageItem/MessageItem.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/myRedux/conversationsReducer.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/myRedux/profileReducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="c6ee798a-8930-4021-81c9-786f5c313047" name="Changes" comment="dispatch-reducer implemented">
+      <change afterPath="$PROJECT_DIR$/src/components/Content/Profile/MyPosts/MyPostsContainer.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/myRedux/reduxStore.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Content/Content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Content/Content.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Content/Conversations/Conversations.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Content/Conversations/Conversations.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Content/Conversations/MessageItems/MessageItems.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Content/Conversations/MessageItems/MessageItems.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.test.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Content/Profile/MyPosts/MyPosts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Content/Profile/MyPosts/MyPosts.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Content/Profile/Profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Content/Profile/Profile.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/myRedux/conversationsReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/myRedux/conversationsReducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/myRedux/profileReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/myRedux/profileReducer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/myRedux/state.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/myRedux/state.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -26,6 +27,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -72,6 +74,11 @@
     <property name="ts.external.directory.path" value="D:\socialNetworkTypeScript\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\socialNetworkTypeScript\src\myRedux" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
@@ -106,7 +113,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649519175486</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="dispatch-reducer implemented">
+      <created>1649586118869</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1649586118869</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -126,7 +140,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="redone: rerender into observer-subscriber" />
     <MESSAGE value="another step to myRedux with store" />
-    <option name="LAST_COMMIT_MESSAGE" value="another step to myRedux with store" />
+    <MESSAGE value="dispatch-reducer implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="dispatch-reducer implemented" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

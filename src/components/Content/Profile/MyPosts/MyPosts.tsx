@@ -1,32 +1,31 @@
-import React from "react";
+import React, {ChangeEvent} from "react";
 import css from "./MyPosts.module.css";
 import {Post} from "./Post/Post";
-import {ActionType, ProfileMyPostArrayType} from "../../../../myRedux/state";
-import {addPostActionCreator, onPostChangeHandlerActionCreator} from "../../../../myRedux/profileReducer";
+import {ProfileMyPostArrayType, ProfileMyPostType} from "../../../../myRedux/state";
 
 type MyPostsPostPropsType = {
-    data: ProfileMyPostArrayType
-    dispatch: (action: ActionType) => void
+    posts: Array<ProfileMyPostType>
+    defaultPostText: ProfileMyPostArrayType["newPostText"]
+    addPost: () => void
+    editPostTextHandler: (event: ChangeEvent<HTMLTextAreaElement>) => void
 }
 
-
 export function MyPosts(props: MyPostsPostPropsType) {
-    let newPostElement: React.RefObject<HTMLTextAreaElement> = React.createRef();
-    let onAddPostHandler = () => {
-        props.dispatch(addPostActionCreator())
-    }
-    let onPostChangeHandler = () => {
-        newPostElement.current && props.dispatch(onPostChangeHandlerActionCreator(newPostElement.current.value))
-    }
+    // let newPostElement: React.RefObject<HTMLTextAreaElement> = React.createRef();
+    // const onChange = () => {
+    //     const currentValue: string= newPostElement.current ? newPostElement.current.value : ''
+    //     props.editPostTextHandler(newPostElement.currenturrentValue)
+    // }
 
     return <div className={css.myPosts}>
         <div>
-            <textarea ref={newPostElement} onChange={onPostChangeHandler} value={props.data.newPostText}/>
+            <textarea onChange={props.editPostTextHandler}
+                      value={props.defaultPostText}/>
             <div>
-                <button onClick={onAddPostHandler}>add text</button>
+                <button onClick={props.addPost}>add text</button>
             </div>
         </div>
-        {props.data.profilePosts.map((el) => <Post id={el.id} text={el.text}/>)}
+        {props.posts.map((el) => <Post id={el.id} text={el.text}/>)}
     </div>
 }
 

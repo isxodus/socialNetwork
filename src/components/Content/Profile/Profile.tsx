@@ -3,6 +3,7 @@ import React from "react";
 import {MyPosts} from "./MyPosts/MyPosts";
 import {ProfileHeader} from "./ProfileInfo/ProfileHeader";
 import {ActionType, ProfilePageType} from "../../../myRedux/state";
+import {MyPostsContainer} from "./MyPosts/MyPostsContainer";
 
 type ProfileType = {
     data: ProfilePageType
@@ -12,7 +13,7 @@ type ProfileType = {
 export function Profile(props: ProfileType) {
     return <div>
         <ProfileHeader data={props.data.profileInfo}/>
-        <MyPosts data={props.data.profilePosts}
-                 dispatch={props.dispatch}/>
+        <MyPostsContainer data={props.data.profilePosts}
+                          dispatch={props.dispatch}/>
     </div>
 }

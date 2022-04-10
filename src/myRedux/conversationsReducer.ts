@@ -1,7 +1,82 @@
 import {ActionType, ConversationsPageType} from "./state";
 
+//
+let initialReducerState: ConversationsPageType = {
+    conversations: [
+        {
+            conversationalistInfo: {
+                id: 1,
+                name: "Kolya"
+            },
+            messageArray: [{
+                id: 1,
+                messageText: "hi",
+                messageDate: "03.03.2022",
+                messageTime: "10:00:00",
+            }, {
+                id: 2,
+                messageText: "hello",
+                messageDate: "03.03.2022",
+                messageTime: "10:00:01"
+            }, {
+                id: 3,
+                messageText: "how are you doing",
+                messageDate: "03.03.2022",
+                messageTime: "10:05:00"
+            }, {
+                id: 4,
+                messageText: "im good",
+                messageDate: "03.03.2022",
+                messageTime: "10:15:00"
+            }]
+        }, {
+            conversationalistInfo: {
+                id: 2,
+                name: "Vasya"
+            },
+            messageArray: [{
+                id: 1,
+                messageText: "wazzzup",
+                messageDate: "03.03.2022",
+                messageTime: "12:00:00"
+            }, {
+                id: 2,
+                messageText: "just chilling",
+                messageDate: "03.03.2022",
+                messageTime: "13:00:01"
+            }, {
+                id: 3,
+                messageText: "cool",
+                messageDate: "03.03.2022",
+                messageTime: "10:45:00"
+            }]
+        }, {
+            conversationalistInfo: {
+                id: 3,
+                name: "Dima"
+            },
+            messageArray: [{
+                id: 1,
+                messageText: "wazup",
+                messageDate: "03.03.2022",
+                messageTime: "12:00:00"
+            }, {
+                id: 2,
+                messageText: "just chilling",
+                messageDate: "03.03.2022",
+                messageTime: "13:00:01"
+            }, {
+                id: 3,
+                messageText: "cool",
+                messageDate: "03.03.2022",
+                messageTime: "10:45:00"
+            }]
+        }],
+    newMessageText: ''
+}
+
 //REDUCER
-export const conversationsReducer = (reducerState: ConversationsPageType, action: ActionType): ConversationsPageType => {
+export const conversationsReducer = (reducerState: ConversationsPageType = initialReducerState, action: ActionType): ConversationsPageType => {
     switch (action.type) {
         case 'ADD-MESSAGE':
             // const newMessage: ProfileMyPostType = {

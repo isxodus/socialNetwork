@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import {App} from './App';
-import {store, StateType} from './myRedux/state'
+import {StateType} from './myRedux/state'
+import {store} from './myRedux/reduxStore'
 
 function renderApp(state: StateType) {
     ReactDOM.render(
@@ -15,4 +16,4 @@ function renderApp(state: StateType) {
 }
 
 renderApp(store.getState())
-store.subscribe(renderApp)
+store.subscribe(() => renderApp(store.getState()))

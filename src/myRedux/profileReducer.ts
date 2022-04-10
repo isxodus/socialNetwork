@@ -1,7 +1,34 @@
 import {ActionType, ProfileMyPostType, ProfilePageType} from "./state";
 
+//
+let initialReducerState: ProfilePageType = {
+    profileInfo: {
+        imageLink: "https://media.istockphoto.com/photos/financial-center-picture-id507076592?k=20&m=507076592&s=612x612&w=0&h=Jmctr_haN1UyZsferwuczs624R2Q3tro_WmQifotvT4=",
+        altText: "pretty image",
+        myInfo: "something cool"
+    },
+    profilePosts: {
+        profilePosts: [
+            {
+                id: 1,
+                text: "ts rocks"
+            }, {
+                id: 2,
+                text: "doing stuff!!!!!!!!!!!!!!!!"
+            }, {
+                id: 3,
+                text: "i am good"
+            }, {
+                id: 4,
+                text: "hello world!!!"
+            }
+        ],
+        newPostText: 'fill something'
+    }
+}
+
 //REDUCER
-export const profileReducer = (reducerState: ProfilePageType, action: ActionType): ProfilePageType => {
+export const profileReducer = (reducerState: ProfilePageType = initialReducerState, action: ActionType): ProfilePageType => {
     switch (action.type) {
         case 'ADD-POST':
             const newPost: ProfileMyPostType = {
