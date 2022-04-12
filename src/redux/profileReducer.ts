@@ -29,18 +29,24 @@ let initialReducerState: ProfilePageType = {
 
 //REDUCER
 export const profileReducer = (reducerState: ProfilePageType = initialReducerState, action: ActionType): ProfilePageType => {
+    let profileReducerCopy: ProfilePageType = {...reducerState}
     switch (action.type) {
         case 'ADD-POST':
             const newPost: ProfileMyPostType = {
                 id: reducerState.profilePosts.profilePosts.length + 1,
                 text: reducerState.profilePosts.newPostText
             }
-            reducerState.profilePosts.profilePosts.push(newPost)
-            reducerState.profilePosts.newPostText = 'fill another post'
-            return reducerState
+            // reducerState.profilePosts.
+            profileReducerCopy.profilePosts = {...reducerState.profilePosts}
+            profileReducerCopy.profilePosts.profilePosts = [...reducerState.profilePosts.profilePosts]
+            profileReducerCopy.profilePosts.profilePosts.push(newPost)
+            profileReducerCopy.profilePosts.newPostText = 'fill another post'
+            console.log(reducerState)
+            return profileReducerCopy
         case 'CHANGE-POST-TEXT':
-            reducerState.profilePosts.newPostText = action.newText ? action.newText : ''
-            return reducerState
+            profileReducerCopy.profilePosts = {...reducerState.profilePosts}
+            profileReducerCopy.profilePosts.newPostText = action.newText ? action.newText : ''
+            return profileReducerCopy
         default:
             return reducerState
     }

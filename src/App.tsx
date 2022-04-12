@@ -1,5 +1,4 @@
 import React from 'react';
-import {BrowserRouter} from "react-router-dom"
 import "./App.css"
 import {Header} from "./components/Header/Header";
 import {NavBar} from "./components/NavBar/NavBar";
@@ -12,14 +11,15 @@ type AppType = {
 }
 
 export const App = (props: AppType) => {
+    // debugger
     return (
-        <BrowserRouter>
-            <div className={"app-wrapper"}>
-                <Header/>
-                <NavBar/>
-                <Content data={props.data}
-                         dispatch={props.dispatch}/>
-            </div>
-        </BrowserRouter>
+
+        <div className={"app-wrapper"}>
+            <Header/>
+            <NavBar/>
+            <Content data={props.data}
+                     dispatch={props.dispatch}/>
+        </div>
+
     );
 }

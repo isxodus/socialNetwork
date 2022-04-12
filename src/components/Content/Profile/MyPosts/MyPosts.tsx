@@ -13,6 +13,7 @@ type MyPostsPostPropsType = {
 export function MyPosts(props: MyPostsPostPropsType) {
     return <div className={css.myPosts}>
         <div>
+
             <textarea onChange={props.editPostTextHandler}
                       value={props.defaultPostText}/>
             <div>
