@@ -1,19 +1,19 @@
-import React, {ChangeEvent} from "react";
-import {ActionType, ProfilePageType, StateType} from "../../../../redux/reduxStore";
+import {ChangeEvent} from "react";
+import {PostMessageActionType, StateType} from "../../../../redux/reduxStore";
 import {addPostActionCreator, onPostChangeHandlerActionCreator} from "../../../../redux/profileReducer";
 import {MyPosts} from "./MyPosts";
 import {connect} from "react-redux";
 
 
 let mapStateToProps = (state: StateType) => {
-    debugger
     return {
         posts: state.profilePage.profilePosts.profilePosts,
         defaultPostText: state.profilePage.profilePosts.newPostText,
     }
 }
 
-let mapDispatchToProps = (dispatch: (action: ActionType) => void) => {
+
+let mapDispatchToProps = (dispatch: (action: PostMessageActionType) => void) => {
     return {
         addPost: () => dispatch(addPostActionCreator()),
         editPostTextHandler: (event: ChangeEvent<HTMLTextAreaElement>) => {

@@ -1,11 +1,11 @@
 import css from "../Conversations.module.css";
 import React from "react";
 import {NavLink} from "react-router-dom";
-import {ConversationalistType, ConversationType} from "../../../../redux/reduxStore";
+import {ConversationalistType} from "../../../../redux/reduxStore";
 
 
 type ConversationItemsType = {
-    data: Array<ConversationType>
+    data: Array<ConversationalistType>
 }
 
 function ShowConversationItem(props: ConversationalistType) {
@@ -18,8 +18,8 @@ export function Conversationalists(props: ConversationItemsType) {
     return <div className={css.conversationItems}>
         {
             props.data?.map((el) => {
-                return <ShowConversationItem id={el.conversationalistInfo.id}
-                                             name={el.conversationalistInfo.name}
+                return <ShowConversationItem id={el.id}
+                                             name={el.name}
 
                 />
             })

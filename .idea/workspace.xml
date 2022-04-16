@@ -4,17 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c6ee798a-8930-4021-81c9-786f5c313047" name="Changes" comment="cleared out some code">
+    <list default="true" id="c6ee798a-8930-4021-81c9-786f5c313047" name="Changes" comment="minor changes">
+      <change afterPath="$PROJECT_DIR$/src/components/Content/Conversations/ChatMessages/ChatMessage/ChatMessage.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Content/Conversations/ChatMessages/ChatMessage/ChatMessage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Content/Conversations/ChatMessages/ChatMessages.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Content/Conversations/ConversationsContainer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StoreContext.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Content/Profile/MyPosts/MyPosts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Content/Profile/MyPosts/MyPosts.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Content/Content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Content/Content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Content/Conversations/ConversationItems/Conversationalists.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Content/Conversations/ConversationItems/Conversationalists.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Content/Conversations/Conversations.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Content/Conversations/Conversations.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Content/Conversations/Conversations.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Content/Conversations/Conversations.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Content/Conversations/MessageItems/MessageItem/MessageItem.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Content/Conversations/MessageItems/MessageItem/MessageItem.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Content/Conversations/MessageItems/MessageItems.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Content/Profile/MyPosts/MyPostsContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Content/Profile/MyPosts/MyPostsContainer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Content/Profile/Profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Content/Profile/Profile.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/conversationsReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/conversationsReducer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/profileReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/profileReducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reduxStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reduxStore.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +55,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="27Yp0MUyiWrrb8earGpg10uMWmR" />
   <component name="ProjectLevelVcsManager">
@@ -62,6 +70,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/Content/Conversations" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -73,7 +82,11 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\socialNetworkTypeScript\src\components\Content\Conversations" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\socialNetworkTypeScript\src\components\Content\Conversations\ChatMessages" />
       <recent name="D:\socialNetworkTypeScript\src\redux" />
       <recent name="D:\socialNetworkTypeScript\src\myRedux" />
     </key>
@@ -109,6 +122,11 @@
       <workItem from="1649506652173" duration="18810000" />
       <workItem from="1649614232811" duration="7456000" />
       <workItem from="1649700331012" duration="3696000" />
+      <workItem from="1649796163182" duration="408000" />
+      <workItem from="1649876893752" duration="2962000" />
+      <workItem from="1649961822368" duration="1208000" />
+      <workItem from="1650037265027" duration="1195000" />
+      <workItem from="1650119815223" duration="6441000" />
     </task>
     <task id="LOCAL-00001" summary="redone: rerender into observer-subscriber">
       <created>1649519175486</created>
@@ -145,11 +163,28 @@
       <option name="project" value="LOCAL" />
       <updated>1649614247936</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="minor changes">
+      <created>1649796252916</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1649796252916</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -168,17 +203,8 @@
     <MESSAGE value="dispatch-reducer implemented" />
     <MESSAGE value="played a bit with MyPostContainer" />
     <MESSAGE value="cleared out some code" />
-    <option name="LAST_COMMIT_MESSAGE" value="cleared out some code" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/components/Content/Profile/MyPosts/MyPosts.tsx</url>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="minor changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="minor changes" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

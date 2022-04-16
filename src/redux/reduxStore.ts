@@ -22,7 +22,7 @@ export type StateType = {
     profilePage: ProfilePageType
     conversationsPage: ConversationsPageType
 }
-export type ActionType = {
+export type PostMessageActionType = {
     type: "ADD-POST" | "CHANGE-POST-TEXT" | "ADD-MESSAGE" | "CHANGE-MESSAGE-TEXT"
     newText?: string
 }
@@ -50,13 +50,14 @@ export type ProfileMyPostType = {
 
 //Conversation types
 export type ConversationsPageType = {
-    conversations: Array<ConversationType>
+    conversations: Array<ConversationalistType>
+    messages: Array<MessageType>
     newMessageText: string
 }
-export type ConversationType = {
-    conversationalistInfo: ConversationalistType
-    messageArray?: Array<MessageType>
-}
+// export type ConversationType = {
+//     conversationalistInfo: ConversationalistType
+//     messageArray?: Array<MessageType>
+// }
 export type ConversationalistType = {
     id: number
     name: string

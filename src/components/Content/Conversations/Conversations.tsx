@@ -1,20 +1,25 @@
-import React from "react";
+import React, {ChangeEvent} from "react";
 import css from "./Conversations.module.css";
 import {Conversationalists} from "./ConversationItems/Conversationalists";
-import {MessageItems} from "./MessageItems/MessageItems";
-import {ActionType, ConversationsPageType} from "../../../redux/reduxStore";
+import {ChatMessages} from "./ChatMessages/ChatMessages";
+import {ConversationalistType, MessageType} from "../../../redux/reduxStore";
 
 type ConversationsPropsType = {
-    data: ConversationsPageType
-    dispatch: (action: ActionType) => void
+    conversations: Array<ConversationalistType>
+    messages: Array<MessageType>
+    newMessageText: string
+    addMessage: () => void
+    editMessageTextHandler: (event: ChangeEvent<HTMLTextAreaElement>) => void
 }
 
 export function Conversations(props: ConversationsPropsType) {
     return <div className={css.conversations}>
-        <Conversationalists data={props.data.conversations}/>
-        {props.data.conversations[0].messageArray ?
-            <MessageItems data={props.data.conversations}
-                          newMessageText={props.data.newMessageText}
-                          dispatch={props.dispatch}/> : "0 "}
+        <Conversationalists data={props.conversations}/>
+        {props.messages ?
+            <ChatMessages messages={props.messages}
+                          newMessageText={props.newMessageText}
+                          addMessage={props.addMessage}
+                          editMessage={props.editMessageTextHandler}/> : "0 "}
+
     </div>
 }
