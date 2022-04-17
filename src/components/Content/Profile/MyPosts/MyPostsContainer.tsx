@@ -1,6 +1,6 @@
 import {ChangeEvent} from "react";
-import {PostMessageActionType, StateType} from "../../../../redux/reduxStore";
-import {addPostActionCreator, onPostChangeHandlerActionCreator} from "../../../../redux/profileReducer";
+import {PostAndMessageActionType, StateType} from "../../../../redux/reduxStore";
+import {addPostActionCreator, onPostChangeHandlerActionCreator} from "../../../../redux/profilePageReducer";
 import {MyPosts} from "./MyPosts";
 import {connect} from "react-redux";
 
@@ -13,7 +13,7 @@ let mapStateToProps = (state: StateType) => {
 }
 
 
-let mapDispatchToProps = (dispatch: (action: PostMessageActionType) => void) => {
+let mapDispatchToProps = (dispatch: (action: PostAndMessageActionType) => void) => {
     return {
         addPost: () => dispatch(addPostActionCreator()),
         editPostTextHandler: (event: ChangeEvent<HTMLTextAreaElement>) => {

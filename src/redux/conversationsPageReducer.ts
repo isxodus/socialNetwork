@@ -1,4 +1,4 @@
-import {PostMessageActionType, ConversationsPageType, MessageType} from "./reduxStore";
+import {PostAndMessageActionType, ConversationsPageType, MessageType} from "./reduxStore";
 
 // STATE
 let initialReducerState: ConversationsPageType = {
@@ -37,7 +37,7 @@ let initialReducerState: ConversationsPageType = {
 }
 
 //REDUCER
-export const conversationsReducer = (reducerState: ConversationsPageType = initialReducerState, action: PostMessageActionType): ConversationsPageType => {
+export const conversationsPageReducer = (reducerState: ConversationsPageType = initialReducerState, action: PostAndMessageActionType): ConversationsPageType => {
     switch (action.type) {
         case 'ADD-MESSAGE':
             let newMessage: MessageType = {id: Math.random(), messageText: reducerState.newMessageText, messageDate: '', messageTime: ''}
@@ -50,5 +50,5 @@ export const conversationsReducer = (reducerState: ConversationsPageType = initi
 }
 
 //ACTION TYPE CREATORS
-export const addMessageActionCreator = (): PostMessageActionType => ({type: 'ADD-MESSAGE'})
-export const onMessageChangeHandlerActionCreator = (newText: string): PostMessageActionType => ({type: 'CHANGE-MESSAGE-TEXT', newText: newText})
+export const addMessageActionCreator = (): PostAndMessageActionType => ({type: 'ADD-MESSAGE'})
+export const onMessageChangeHandlerActionCreator = (newText: string): PostAndMessageActionType => ({type: 'CHANGE-MESSAGE-TEXT', newText: newText})

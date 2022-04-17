@@ -1,7 +1,7 @@
 import {ChangeEvent} from "react";
-import {PostMessageActionType, StateType} from "../../../redux/reduxStore";
+import {PostAndMessageActionType, StateType} from "../../../redux/reduxStore";
 import {connect} from "react-redux";
-import {addMessageActionCreator, onMessageChangeHandlerActionCreator} from "../../../redux/conversationsReducer";
+import {addMessageActionCreator, onMessageChangeHandlerActionCreator} from "../../../redux/conversationsPageReducer";
 import {Conversations} from "./Conversations";
 
 
@@ -14,7 +14,7 @@ let mapStateToProps = (state: StateType) => {
 }
 
 
-let mapDispatchToProps = (dispatch: (action: PostMessageActionType) => void) => {
+let mapDispatchToProps = (dispatch: (action: PostAndMessageActionType) => void) => {
     return {
         addMessage: () => dispatch(addMessageActionCreator()),
         editMessageTextHandler: (event: ChangeEvent<HTMLTextAreaElement>) => {

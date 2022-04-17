@@ -2,12 +2,12 @@ import React from "react";
 // import css from "./Profile.module.css";
 import {ProfileHeader} from "./ProfileInfo/ProfileHeader";
 import {MyPostsContainer} from "./MyPosts/MyPostsContainer";
-import {PostMessageActionType, ProfilePageType} from "../../../redux/reduxStore";
+import {PostAndMessageActionType, ProfilePageType} from "../../../redux/reduxStore";
 
 
 type ProfileType = {
     data: ProfilePageType
-    dispatch: (action: PostMessageActionType) => void
+    dispatch: (action: PostAndMessageActionType) => void
 }
 
 export function Profile(props: ProfileType) {

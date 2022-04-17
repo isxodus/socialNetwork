@@ -1,4 +1,4 @@
-import {PostMessageActionType, ProfileMyPostType, ProfilePageType} from "./reduxStore";
+import {PostAndMessageActionType, ProfileMyPostType, ProfilePageType} from "./reduxStore";
 
 // STATE
 let initialReducerState: ProfilePageType = {
@@ -28,7 +28,7 @@ let initialReducerState: ProfilePageType = {
 }
 
 //REDUCER
-export const profileReducer = (reducerState: ProfilePageType = initialReducerState, action: PostMessageActionType): ProfilePageType => {
+export const profilePageReducer = (reducerState: ProfilePageType = initialReducerState, action: PostAndMessageActionType): ProfilePageType => {
     let reducerStateCopy: ProfilePageType = {...reducerState}
     switch (action.type) {
         case 'ADD-POST':
@@ -53,5 +53,5 @@ export const profileReducer = (reducerState: ProfilePageType = initialReducerSta
 }
 
 //ACTION TYPE CREATORS
-export const addPostActionCreator = (): PostMessageActionType => ({type: 'ADD-POST'})
-export const onPostChangeHandlerActionCreator = (newText: string): PostMessageActionType => ({type: 'CHANGE-POST-TEXT', newText: newText})
+export const addPostActionCreator = (): PostAndMessageActionType => ({type: 'ADD-POST'})
+export const onPostChangeHandlerActionCreator = (newText: string): PostAndMessageActionType => ({type: 'CHANGE-POST-TEXT', newText: newText})

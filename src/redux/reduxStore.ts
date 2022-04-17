@@ -1,10 +1,12 @@
 import {combineReducers, createStore} from "redux";
-import {profileReducer} from "./profileReducer";
-import {conversationsReducer} from "./conversationsReducer";
+import {profilePageReducer} from "./profilePageReducer";
+import {conversationsPageReducer} from "./conversationsPageReducer";
+import {usersPageReducer} from "./usersReducer";
 
 let reducers = combineReducers({
-    profilePage: profileReducer,
-    conversationsPage: conversationsReducer
+    profilePage: profilePageReducer,
+    conversationsPage: conversationsPageReducer,
+    usersPage: usersPageReducer
 })
 export let store = createStore(reducers) //STORE TYPE
 //my implementation could be found 10.04.2022
@@ -17,14 +19,21 @@ export let store = createStore(reducers) //STORE TYPE
 
 //TYPES
 
-//State and Action types
+//STATE
 export type StateType = {
     profilePage: ProfilePageType
     conversationsPage: ConversationsPageType
+    usersPage: UsersPageType
 }
-export type PostMessageActionType = {
+//ACTION TYPES
+export type PostAndMessageActionType = {
     type: "ADD-POST" | "CHANGE-POST-TEXT" | "ADD-MESSAGE" | "CHANGE-MESSAGE-TEXT"
     newText?: string
+}
+export type UsersPageActionType = {
+    type: 'TOGGLE_FOLLOW' | "SET_USERS"
+    userId?: string
+    users?: Array<UserType>
 }
 
 //Profile Page
@@ -54,10 +63,6 @@ export type ConversationsPageType = {
     messages: Array<MessageType>
     newMessageText: string
 }
-// export type ConversationType = {
-//     conversationalistInfo: ConversationalistType
-//     messageArray?: Array<MessageType>
-// }
 export type ConversationalistType = {
     id: number
     name: string
@@ -69,3 +74,18 @@ export type MessageType = {
     messageTime: string
 }
 
+//USERS PAGES
+export type UsersPageType = {
+    users: Array<UserType>
+}
+export type UserType = {
+    id: string
+    fullName: string
+    status: string
+    location: LocationType
+    followStatus: boolean
+}
+export type LocationType = {
+    city: string
+    country: string
+}

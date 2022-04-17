@@ -2,12 +2,13 @@ import React from "react";
 import {Route, Routes} from 'react-router-dom';
 // import css from "./Content.module.css";
 import {Profile} from "./Profile/Profile";
-import {PostMessageActionType, StateType} from "../../redux/reduxStore";
+import {PostAndMessageActionType, StateType} from "../../redux/reduxStore";
 import {ConversationsContainer} from "./Conversations/ConversationsContainer";
+import {UsersContainer} from "./Users/UsersContainer";
 
 type ContentType = {
     data: StateType
-    dispatch: (action: PostMessageActionType) => void
+    dispatch: (action: PostAndMessageActionType) => void
 }
 
 export function Content(props: ContentType) {
@@ -20,6 +21,8 @@ export function Content(props: ContentType) {
                                      dispatch={props.dispatch}/>}/>
             <Route path="/conversations/*"
                    element={<ConversationsContainer/>}/>
+            <Route path="/users/*"
+                   element={<UsersContainer/>}/>
         </Routes>
     </div>
 }

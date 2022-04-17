@@ -1,0 +1,22 @@
+.userInfoContainer {
+    display: grid;
+    grid-template-columns: 1fr;
+    border: solid 1px red;
+}
+
+.userInfo {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    padding: 5px;
+}
+
+.avatar {
+    display: grid;
+    grid-template-rows: 100px 1fr;
+}
+
+.avatar img {
+    width: 100px;
+    border-radius: 50%;
+    border: solid 1px black;
+}
