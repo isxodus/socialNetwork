@@ -31,9 +31,11 @@ export type PostAndMessageActionType = {
     newText?: string
 }
 export type UsersPageActionType = {
-    type: 'TOGGLE_FOLLOW' | "SET_USERS"
+    type: 'TOGGLE_FOLLOW' | "SET_USERS" | "SET_TOTAL_USERS_COUNT" | "SET_CURRENT_PAGE"
     userId?: string
     users?: Array<UserType>
+    totalUsersCount?: number
+    currentPage?: number
 }
 
 //Profile Page
@@ -77,15 +79,18 @@ export type MessageType = {
 //USERS PAGES
 export type UsersPageType = {
     users: Array<UserType>
+    pageSize: number
+    totalUsersCount: number
+    currentPage: number
 }
 export type UserType = {
     id: string
-    fullName: string
+    name: string
     status: string
-    location: LocationType
-    followStatus: boolean
+    photos: PhotosType
+    followed: boolean
 }
-export type LocationType = {
-    city: string
-    country: string
+export type PhotosType = {
+    large: string
+    small: string
 }

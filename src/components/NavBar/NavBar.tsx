@@ -15,6 +15,9 @@ export function NavBar() {
         {/*<div className={css.item}><NavLink to={"/messages"}>Conversations</NavLink></div>*/}
         <div className={css.item}>News</div>
         <div className={css.item}>else</div>
+        <div>___</div>
+        <div><NavLink className={({isActive}) => isActive ? css.itemActive : css.item}
+                      to={"/users"}>Users</NavLink></div>
         <div className={css.item}>settings</div>
 
     </nav>
