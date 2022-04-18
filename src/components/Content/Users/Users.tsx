@@ -3,6 +3,7 @@ import css from "./Users.module.css"
 import {UserType} from "../../../redux/reduxStore";
 import userDefaultPhoto from "./../../../assets/userPhoto.png"
 
+
 type UsersProps = {
     users: Array<UserType>
     pageSize: number
@@ -10,6 +11,7 @@ type UsersProps = {
     currentPage: number
     followUser: (userId: string) => void
     onPageChanged: (pageNumber: number) => void
+    toggleIsFetching: (isFetching: boolean) => void
 }
 
 

@@ -10,13 +10,17 @@ let initialReducerState: UsersPageType = {
     ],
     pageSize: 10,
     totalUsersCount: 0,
-    currentPage: 1
+    currentPage: 1,
+    isFetching: false
 }
 
 
 //REDUCER
 export const usersPageReducer = (reducerState: UsersPageType = initialReducerState, action: UsersPageActionType): UsersPageType => {
     switch (action.type) {
+        case 'TOGGLE_IS_FETCHING':
+            console.log('fetching in reducer')
+            return {...reducerState, isFetching: action.isFetching ? action.isFetching : false}
         case 'TOGGLE_FOLLOW':
             return {
                 ...reducerState,
@@ -48,7 +52,8 @@ export const usersPageReducer = (reducerState: UsersPageType = initialReducerSta
 
 
 //ACTION CREATORS
-export const followAC = (userId: string): UsersPageActionType => ({type: 'TOGGLE_FOLLOW', userId: userId})
-export const setTotalUserCountAC = (count: number): UsersPageActionType => ({type: 'SET_TOTAL_USERS_COUNT', totalUsersCount: count})
-export const setUsersAC = (users: Array<UserType>): UsersPageActionType => ({type: 'SET_USERS', users: users})
-export const setCurrentPageAC = (page: number): UsersPageActionType => ({type: 'SET_CURRENT_PAGE', currentPage: page})
+export const followUser = (userId: string): UsersPageActionType => ({type: 'TOGGLE_FOLLOW', userId: userId})
+export const setTotalUserCount = (count: number): UsersPageActionType => ({type: 'SET_TOTAL_USERS_COUNT', totalUsersCount: count})
+export const setUsers = (users: Array<UserType>): UsersPageActionType => ({type: 'SET_USERS', users: users})
+export const setCurrentPage = (page: number): UsersPageActionType => ({type: 'SET_CURRENT_PAGE', currentPage: page})
+export const toggleIsFetching = (isFetching: boolean): UsersPageActionType => ({type: 'TOGGLE_IS_FETCHING', isFetching: isFetching})

@@ -31,11 +31,12 @@ export type PostAndMessageActionType = {
     newText?: string
 }
 export type UsersPageActionType = {
-    type: 'TOGGLE_FOLLOW' | "SET_USERS" | "SET_TOTAL_USERS_COUNT" | "SET_CURRENT_PAGE"
+    type: 'TOGGLE_FOLLOW' | "SET_USERS" | "SET_TOTAL_USERS_COUNT" | "SET_CURRENT_PAGE" | 'TOGGLE_IS_FETCHING'
     userId?: string
     users?: Array<UserType>
     totalUsersCount?: number
     currentPage?: number
+    isFetching?: boolean
 }
 
 //Profile Page
@@ -82,6 +83,7 @@ export type UsersPageType = {
     pageSize: number
     totalUsersCount: number
     currentPage: number
+    isFetching: boolean
 }
 export type UserType = {
     id: string
