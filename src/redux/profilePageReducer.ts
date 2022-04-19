@@ -1,27 +1,45 @@
-import {PostAndMessageActionType, ProfileMyPostType, ProfilePageType} from "./reduxStore";
+import {PostAndMessageActionType, ProfileInfoType, ProfileMyPostType, ProfilePageType} from "./reduxStore";
 
 // STATE
 let initialReducerState: ProfilePageType = {
     profileInfo: {
-        imageLink: "https://media.istockphoto.com/photos/financial-center-picture-id507076592?k=20&m=507076592&s=612x612&w=0&h=Jmctr_haN1UyZsferwuczs624R2Q3tro_WmQifotvT4=",
-        altText: "pretty image",
-        myInfo: "something cool"
+        aboutMe: "я круто чувак 1001%",
+        contacts: {
+            facebook: "facebook.com",
+            website: null,
+            vk: "vk.com/dimych",
+            twitter: "https://twitter.com/@sdf",
+            instagram: "instagra.com/sds",
+            youtube: null,
+            github: "github.com",
+            mainLink: null
+        },
+        lookingForAJob: true,
+        lookingForAJobDescription: "не ищу, а дурачусь",
+        fullName: "samurai dimych",
+        userId: 2,
+        photos: {
+            small: "https://social-network.samuraijs.com/activecontent/images/users/2/user-small.jpg?v=0",
+            large: "https://social-network.samuraijs.com/activecontent/images/users/2/user.jpg?v=0"
+        },
     },
+    currentProfile: 2,
+
     profilePosts: {
         profilePosts: [
-            {
-                id: 1,
-                text: "ts rocks"
-            }, {
-                id: 2,
-                text: "doing stuff!!!!!!!!!!!!!!!!"
-            }, {
-                id: 3,
-                text: "i am good"
-            }, {
-                id: 4,
-                text: "hello world!!!"
-            }
+            // {
+            //     id: 1,
+            //     text: "ts rocks"
+            // }, {
+            //     id: 2,
+            //     text: "doing stuff!!!!!!!!!!!!!!!!"
+            // }, {
+            //     id: 3,
+            //     text: "i am good"
+            // }, {
+            //     id: 4,
+            //     text: "hello world!!!"
+            // }
         ],
         newPostText: 'fill something'
     }
@@ -47,11 +65,19 @@ export const profilePageReducer = (reducerState: ProfilePageType = initialReduce
             reducerStateCopy.profilePosts = {...reducerState.profilePosts}
             reducerStateCopy.profilePosts.newPostText = action.newText ? action.newText : ''
             return reducerStateCopy
+        case 'SET-PROFILE':
+            // console.log('got into set profile in reducer')
+            // console.log(action.profileInfo)
+            return {
+                ...reducerState,
+                profileInfo: action.profileInfo ? action.profileInfo : reducerState.profileInfo
+            }
         default:
             return reducerState
     }
 }
 
 //ACTION TYPE CREATORS
-export const addPostActionCreator = (): PostAndMessageActionType => ({type: 'ADD-POST'})
-export const onPostChangeHandlerActionCreator = (newText: string): PostAndMessageActionType => ({type: 'CHANGE-POST-TEXT', newText: newText})
+export const addPost = (): PostAndMessageActionType => ({type: 'ADD-POST'})
+export const onPostChangeHandler = (newText: string): PostAndMessageActionType => ({type: 'CHANGE-POST-TEXT', newText: newText})
+export const setProfile = (profileInfo: ProfileInfoType): PostAndMessageActionType => ({type: 'SET-PROFILE', profileInfo: profileInfo})

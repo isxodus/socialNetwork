@@ -27,8 +27,9 @@ export type StateType = {
 }
 //ACTION TYPES
 export type PostAndMessageActionType = {
-    type: "ADD-POST" | "CHANGE-POST-TEXT" | "ADD-MESSAGE" | "CHANGE-MESSAGE-TEXT"
+    type: "ADD-POST" | "CHANGE-POST-TEXT" | "ADD-MESSAGE" | "CHANGE-MESSAGE-TEXT" | 'SET-PROFILE'
     newText?: string
+    profileInfo?: ProfileInfoType
 }
 export type UsersPageActionType = {
     type: 'TOGGLE_FOLLOW' | "SET_USERS" | "SET_TOTAL_USERS_COUNT" | "SET_CURRENT_PAGE" | 'TOGGLE_IS_FETCHING'
@@ -42,12 +43,31 @@ export type UsersPageActionType = {
 //Profile Page
 export type ProfilePageType = {
     profileInfo: ProfileInfoType
+    currentProfile: number
     profilePosts: ProfileMyPostArrayType
 }
 export type ProfileInfoType = {
-    imageLink: string
-    altText: string
-    myInfo: string
+    aboutMe: string | null
+    lookingForAJob: boolean | null
+    lookingForAJobDescription: string | null
+    fullName: string | null
+    userId: number | null
+    contacts: ProfileContactsType
+    photos: ProfilePhotosType
+}
+export type ProfileContactsType = {
+    facebook: string | null
+    website: string | null
+    vk: string | null
+    twitter: string | null
+    instagram: string | null
+    youtube: string | null
+    github: string | null
+    mainLink: string | null
+}
+export type ProfilePhotosType = {
+    small: string | null
+    large: string | null
 }
 export type ProfileMyPostArrayType = {
     profilePosts: Array<ProfileMyPostType>

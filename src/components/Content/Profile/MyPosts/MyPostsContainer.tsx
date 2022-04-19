@@ -1,6 +1,6 @@
 import {ChangeEvent} from "react";
 import {PostAndMessageActionType, StateType} from "../../../../redux/reduxStore";
-import {addPostActionCreator, onPostChangeHandlerActionCreator} from "../../../../redux/profilePageReducer";
+import {addPost, onPostChangeHandler} from "../../../../redux/profilePageReducer";
 import {MyPosts} from "./MyPosts";
 import {connect} from "react-redux";
 
@@ -15,10 +15,10 @@ let mapStateToProps = (state: StateType) => {
 
 let mapDispatchToProps = (dispatch: (action: PostAndMessageActionType) => void) => {
     return {
-        addPost: () => dispatch(addPostActionCreator()),
+        addPost: () => dispatch(addPost()),
         editPostTextHandler: (event: ChangeEvent<HTMLTextAreaElement>) => {
             const currentValue = event.currentTarget.value
-            dispatch(onPostChangeHandlerActionCreator(currentValue))
+            dispatch(onPostChangeHandler(currentValue))
         }
     }
 }
