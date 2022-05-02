@@ -2,25 +2,28 @@ import React, {ChangeEvent} from "react";
 import css from "./MyPosts.module.css";
 import {Post} from "./Post/Post";
 import {ProfileMyPostArrayType, ProfileMyPostType} from "../../../../redux/reduxStore";
+import {UniversalInputArea} from "../../../../componentsUniversal/UniversalInputArea/UniversalInputArea";
 
 type MyPostsPostPropsType = {
     posts: Array<ProfileMyPostType>
     defaultPostText: ProfileMyPostArrayType["newPostText"]
     addPost: () => void
     editPostTextHandler: (event: ChangeEvent<HTMLTextAreaElement>) => void
+    addNewPost: (text: string) => void
 }
 
 export function MyPosts(props: MyPostsPostPropsType) {
     return <div className={css.myPosts}>
         <div>
-
-            <textarea onChange={props.editPostTextHandler}
-                      value={props.defaultPostText}/>
+            <UniversalInputArea type={'input'} createNewEntityFunction={props.addNewPost} buttonText={"superAdd"}
+                                placeholder={"standard phrase"}/>
+            <UniversalInputArea type={'textarea'} createNewEntityFunction={props.addNewPost}
+                                placeholders={['type smth cool', 'this app rocks', 'try new post']}/>
             <div>
                 <button onClick={props.addPost}>add text</button>
             </div>
         </div>
-        {props.posts.map((el) => <Post id={el.id} text={el.text}/>)}
+        {props.posts.map((el) => <Post key={el.id} id={el.id} text={el.text}/>)}
     </div>
 }
 

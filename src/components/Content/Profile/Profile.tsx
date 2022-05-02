@@ -1,9 +1,8 @@
 import React from "react";
 // import css from "./Profile.module.css";
 import {ProfileHeader} from "./ProfileInfo/ProfileHeader";
-import {MyPostsContainer} from "./MyPosts/MyPostsContainer";
+import {MyPostsContainerWithRouter} from "./MyPosts/MyPostsContainer";
 import {ProfilePageType} from "../../../redux/reduxStore";
-
 
 type ProfileType = {
     data: ProfilePageType
@@ -11,9 +10,11 @@ type ProfileType = {
     onPostChangeHandler: (newText: string) => void
 }
 
+
 export function Profile(props: ProfileType) {
+
     return <div>
         <ProfileHeader data={props.data.profileInfo}/>
-        <MyPostsContainer/>
+        <MyPostsContainerWithRouter/>
     </div>
 }

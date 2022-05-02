@@ -2,9 +2,10 @@ import React from "react";
 import {connect} from "react-redux";
 import axios from "axios";
 import {StateType, UserType} from "../../../redux/reduxStore";
-import {followUser, setTotalUserCount, setUsers, setCurrentPage, toggleIsFetching} from "../../../redux/usersReducer";
+import {followUser, setCurrentPage, setTotalUserCount, setUsers, toggleIsFetching} from "../../../redux/usersReducer";
 import {Users} from "./Users";
 import {Preloader} from "../../Common/Preloader";
+
 
 // CLASS COMPONENT TYPE
 type UserProps = {
@@ -26,9 +27,12 @@ export class UsersAPIContainer extends React.Component<UserProps, any> {
     //     super(props);
     // }
 
+
     componentDidMount() {
         this.props.toggleIsFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
+
+        // console.log(location, navigate)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`, {withCredentials: true}).then(response => {
             this.props.setTotalUserCount(response.data.totalCount)
             this.props.setUsers(response.data.items)
             this.props.toggleIsFetching(false)
@@ -40,16 +44,19 @@ export class UsersAPIContainer extends React.Component<UserProps, any> {
         console.log('fetching')
         this.props.toggleIsFetching(true)
         this.props.setCurrentPage(pageNumber)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`).then(response => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`, {withCredentials: true}).then(response => {
             this.props.setUsers(response.data.items)
             this.props.toggleIsFetching(false)
         })
 
     }
 
+    // localComponent = ComponentWithRouter6Router()
+
     render() {
         return <>
-            <Preloader isFetching={this.props.isFetching}></Preloader>
+            <Preloader isFetching={this.props.isFetching}/>
+
             <Users users={this.props.users} totalUsersCount={this.props.totalUsersCount} pageSize={this.props.pageSize}
                    currentPage={this.props.currentPage}
                    followUser={this.props.followUser} onPageChanged={this.onPageChanged} toggleIsFetching={this.props.toggleIsFetching}/>
@@ -98,6 +105,7 @@ let mapDispatchToProps = {
 //
 //     }
 // }
+
 
 export const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersAPIContainer)
 

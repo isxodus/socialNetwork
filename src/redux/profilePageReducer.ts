@@ -27,19 +27,19 @@ let initialReducerState: ProfilePageType = {
 
     profilePosts: {
         profilePosts: [
-            // {
-            //     id: 1,
-            //     text: "ts rocks"
-            // }, {
-            //     id: 2,
-            //     text: "doing stuff!!!!!!!!!!!!!!!!"
-            // }, {
-            //     id: 3,
-            //     text: "i am good"
-            // }, {
-            //     id: 4,
-            //     text: "hello world!!!"
-            // }
+            {
+                id: 1,
+                text: "ts rocks"
+            }, {
+                id: 2,
+                text: "doing stuff!!!!!!!!!!!!!!!!"
+            }, {
+                id: 3,
+                text: "i am good"
+            }, {
+                id: 4,
+                text: "hello world!!!"
+            }
         ],
         newPostText: 'fill something'
     }
@@ -47,6 +47,7 @@ let initialReducerState: ProfilePageType = {
 
 //REDUCER
 export const profilePageReducer = (reducerState: ProfilePageType = initialReducerState, action: PostAndMessageActionType): ProfilePageType => {
+
     let reducerStateCopy: ProfilePageType = {...reducerState}
     switch (action.type) {
         case 'ADD-POST':
@@ -58,6 +59,18 @@ export const profilePageReducer = (reducerState: ProfilePageType = initialReduce
             reducerStateCopy.profilePosts = {...reducerState.profilePosts}
             reducerStateCopy.profilePosts.profilePosts = [...reducerState.profilePosts.profilePosts]
             reducerStateCopy.profilePosts.profilePosts.push(newPost)
+            reducerStateCopy.profilePosts.newPostText = 'fill another post'
+            console.log(reducerState)
+            return reducerStateCopy
+        case 'ADD-POST2':
+            const newPost2: ProfileMyPostType = {
+                id: reducerState.profilePosts.profilePosts.length + 1,
+                text: action.addPostText ? action.addPostText : ''
+            }
+            // reducerState.profilePosts.
+            reducerStateCopy.profilePosts = {...reducerState.profilePosts}
+            reducerStateCopy.profilePosts.profilePosts = [...reducerState.profilePosts.profilePosts]
+            reducerStateCopy.profilePosts.profilePosts.push(newPost2)
             reducerStateCopy.profilePosts.newPostText = 'fill another post'
             console.log(reducerState)
             return reducerStateCopy
@@ -79,5 +92,6 @@ export const profilePageReducer = (reducerState: ProfilePageType = initialReduce
 
 //ACTION TYPE CREATORS
 export const addPost = (): PostAndMessageActionType => ({type: 'ADD-POST'})
+export const addPost2 = (text: string): PostAndMessageActionType => ({type: 'ADD-POST2', addPostText: text})
 export const onPostChangeHandler = (newText: string): PostAndMessageActionType => ({type: 'CHANGE-POST-TEXT', newText: newText})
 export const setProfile = (profileInfo: ProfileInfoType): PostAndMessageActionType => ({type: 'SET-PROFILE', profileInfo: profileInfo})

@@ -3,6 +3,7 @@ import css from "./Users.module.css"
 import {UserType} from "../../../redux/reduxStore";
 import userDefaultPhoto from "./../../../assets/userPhoto.png"
 import {NavLink} from "react-router-dom";
+import axios from "axios";
 
 
 type UsersProps = {
@@ -18,23 +19,26 @@ type UsersProps = {
 
 export function Users(props: UsersProps) {
     let pageNumber = Math.floor(props.totalUsersCount / props.pageSize) + 1
-    let pages = []
+    let pages = [], lastPages = []
     for (let i = 1; i <= Math.min(pageNumber, 10); i++) {
         pages.push(i)
     }
+    for (let i = pageNumber - 10; i <= pageNumber; i++) {
+        lastPages.push(i)
+    }
+
 
     return <div className={css.userInfoContainer}>
         {/*those are page buttons*/}
-        <div>pages {pages.map(el =>
+        <div>Pages: {pages.map(el =>
             <span className={el === props.currentPage ? css.activeButton : ''}
-                  onClick={() => props.onPageChanged(el)}>{String(el)}
+                  onClick={() => props.onPageChanged(el)}>{String(el)}_
                 </span>)}
-            {pageNumber > 10
-                ? <span><span>...</span><span className={pageNumber === props.currentPage ? css.activeButton : ''}
-                                              onClick={() => props.onPageChanged(pageNumber)}>{String(pageNumber)}</span></span>
-                : <></>
-
-            }
+            <span>...</span>
+            {lastPages.map(el =>
+                <span className={el === props.currentPage ? css.activeButton : ''}
+                      onClick={() => props.onPageChanged(el)}>_{String(el)}
+                </span>)}
 
         </div>
         {/*those are for profile cards*/}
@@ -45,7 +49,47 @@ export function Users(props: UsersProps) {
                         <img src={user.photos.small === null ? userDefaultPhoto : user.photos.small}
                              alt="user"/>
                     </NavLink>
-                    <button onClick={() => props.followUser(user.id)}>{user.followed ? 'UNFOLLOW' : 'FOLLOW'}</button>
+                    {user.followed
+                        ? <button onClick={() => {
+
+                            axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, {
+                                withCredentials: true, headers: {
+                                    "API-KEY": "48169160-cec4-4970-9d28-0ecb4c6641d9"
+                                }
+                            }).then(response => {
+                                if (response.data.resultCode === 0) {
+                                    props.followUser(user.id)
+
+                                }
+                                // this.props.setTotalUserCount(response.data.totalCount)
+                                // this.props.setUsers(response.data.items)
+                                // this.props.toggleIsFetching(false)
+                            })
+
+                        }
+                        }>'UNFOLLOW'</button>
+                        : <button onClick={() => {
+
+                            axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, {}
+                                , {
+                                    withCredentials: true
+                                    , headers: {
+                                        "API-KEY": "48169160-cec4-4970-9d28-0ecb4c6641d9"
+                                    }
+                                }).then(response => {
+                                if (response.data.resultCode === 0) {
+                                    props.followUser(user.id)
+
+                                }
+                                // this.props.setTotalUserCount(response.data.totalCount)
+                                // this.props.setUsers(response.data.items)
+                                // this.props.toggleIsFetching(false)
+                            })
+
+                        }
+                        }>'FOLLOW'</button>}
+
+
                 </div>
 
                 <div>{user.name} {user.status} </div>

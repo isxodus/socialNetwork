@@ -4,10 +4,12 @@ import {ProfileInfoType, ProfilePageType, StateType} from "../../../redux/reduxS
 import axios from "axios";
 import {addPost, onPostChangeHandler, setProfile} from "../../../redux/profilePageReducer";
 import {Profile} from "./Profile";
+import {withRouter, WithRouterType} from "../../../componentsUniversal/withRouter/withRouter";
 
 
 // CLASS COMPONENT TYPE
 type ProfileProps = {
+    router: WithRouterType
     data: ProfilePageType
     addPost: () => void
     onPostChangeHandler: (newText: string) => void
@@ -21,8 +23,9 @@ export class ProfileAPIContainer extends React.Component<ProfileProps> {
     // }
 
     componentDidMount() {
-        // this.props.toggleIsFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/2`).then(response => {
+
+        const userId = this.props.router.params['userId'] ? this.props.router.params['userId'] : '2'
+        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId).then(response => {
             this.props.setProfile(response.data)
         })
 
@@ -53,4 +56,7 @@ let mapStateToProps = (state: StateType) => {
 // DISPATCH CONNECT
 let mapDispatchToProps = {addPost, onPostChangeHandler, setProfile}
 
+//
+
 export const ProfileContainer = connect(mapStateToProps, mapDispatchToProps)(ProfileAPIContainer)
+export const ProfileContainerWithRouter = withRouter(ProfileContainer)

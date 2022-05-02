@@ -2,8 +2,10 @@ import {combineReducers, createStore} from "redux";
 import {profilePageReducer} from "./profilePageReducer";
 import {conversationsPageReducer} from "./conversationsPageReducer";
 import {usersPageReducer} from "./usersReducer";
+import {authReducer, AuthStateType} from "./authReducer";
 
 let reducers = combineReducers({
+    auth: authReducer,
     profilePage: profilePageReducer,
     conversationsPage: conversationsPageReducer,
     usersPage: usersPageReducer
@@ -24,10 +26,12 @@ export type StateType = {
     profilePage: ProfilePageType
     conversationsPage: ConversationsPageType
     usersPage: UsersPageType
+    auth: AuthStateType
 }
 //ACTION TYPES
 export type PostAndMessageActionType = {
-    type: "ADD-POST" | "CHANGE-POST-TEXT" | "ADD-MESSAGE" | "CHANGE-MESSAGE-TEXT" | 'SET-PROFILE'
+    type: "ADD-POST" | 'ADD-POST2' | "CHANGE-POST-TEXT" | "ADD-MESSAGE" | "CHANGE-MESSAGE-TEXT" | 'SET-PROFILE'
+    addPostText?: string
     newText?: string
     profileInfo?: ProfileInfoType
 }
@@ -116,3 +120,7 @@ export type PhotosType = {
     large: string
     small: string
 }
+
+
+//@ts-ignore
+window.store = store

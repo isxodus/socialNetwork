@@ -1,8 +1,9 @@
 import {ChangeEvent} from "react";
 import {PostAndMessageActionType, StateType} from "../../../../redux/reduxStore";
-import {addPost, onPostChangeHandler} from "../../../../redux/profilePageReducer";
+import {addPost, addPost2, onPostChangeHandler} from "../../../../redux/profilePageReducer";
 import {MyPosts} from "./MyPosts";
 import {connect} from "react-redux";
+import {withRouter} from "../../../../componentsUniversal/withRouter/withRouter";
 
 
 let mapStateToProps = (state: StateType) => {
@@ -19,11 +20,15 @@ let mapDispatchToProps = (dispatch: (action: PostAndMessageActionType) => void) 
         editPostTextHandler: (event: ChangeEvent<HTMLTextAreaElement>) => {
             const currentValue = event.currentTarget.value
             dispatch(onPostChangeHandler(currentValue))
+        },
+        addNewPost: (text: string) => {
+            dispatch(addPost2(text))
         }
     }
 }
 
 export const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts)
+export const MyPostsContainerWithRouter = withRouter(MyPostsContainer)
 
 
 // type MyPostsPostPropsType = {
