@@ -1,8 +1,10 @@
-import {combineReducers, createStore} from "redux";
+import {combineReducers, createStore, applyMiddleware} from "redux";
+import thunkMiddleware from "redux-thunk"
 import {profilePageReducer} from "./profilePageReducer";
 import {conversationsPageReducer} from "./conversationsPageReducer";
-import {usersPageReducer} from "./usersReducer";
+import {usersPageReducer, UsersPageType} from "./usersReducer";
 import {authReducer, AuthStateType} from "./authReducer";
+
 
 let reducers = combineReducers({
     auth: authReducer,
@@ -10,7 +12,7 @@ let reducers = combineReducers({
     conversationsPage: conversationsPageReducer,
     usersPage: usersPageReducer
 })
-export let store = createStore(reducers) //STORE TYPE
+export let store = createStore(reducers, applyMiddleware(thunkMiddleware)) //STORE TYPE
 //my implementation could be found 10.04.2022
 //those methods are created in the constructor
 //     _callSubscriber: (state: StateType) => void
@@ -35,14 +37,7 @@ export type PostAndMessageActionType = {
     newText?: string
     profileInfo?: ProfileInfoType
 }
-export type UsersPageActionType = {
-    type: 'TOGGLE_FOLLOW' | "SET_USERS" | "SET_TOTAL_USERS_COUNT" | "SET_CURRENT_PAGE" | 'TOGGLE_IS_FETCHING'
-    userId?: string
-    users?: Array<UserType>
-    totalUsersCount?: number
-    currentPage?: number
-    isFetching?: boolean
-}
+
 
 //Profile Page
 export type ProfilePageType = {
@@ -99,26 +94,6 @@ export type MessageType = {
     messageText: string
     messageDate: string
     messageTime: string
-}
-
-//USERS PAGES
-export type UsersPageType = {
-    users: Array<UserType>
-    pageSize: number
-    totalUsersCount: number
-    currentPage: number
-    isFetching: boolean
-}
-export type UserType = {
-    id: string
-    name: string
-    status: string
-    photos: PhotosType
-    followed: boolean
-}
-export type PhotosType = {
-    large: string
-    small: string
 }
 
 

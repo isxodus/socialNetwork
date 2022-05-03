@@ -1,27 +1,32 @@
 import React from "react";
 import {connect} from "react-redux";
-import axios from "axios";
-import {StateType, UserType} from "../../../redux/reduxStore";
-import {followUser, setCurrentPage, setTotalUserCount, setUsers, toggleIsFetching} from "../../../redux/usersReducer";
+import {followThunkCreator, getUsersThunkCreator, UserType} from "../../../redux/usersReducer";
+import {usersAPI} from "../../../api/api";
+import {setCurrentPage, setTotalUserCount, setUsers, toggleIsFetching} from "../../../redux/usersReducer";
 import {Users} from "./Users";
 import {Preloader} from "../../Common/Preloader";
+import {StateType} from "../../../redux/reduxStore";
 
 
-// CLASS COMPONENT TYPE
+//CLASS COMPONENT TYPE
 type UserProps = {
     users: Array<UserType>
     pageSize: number
     totalUsersCount: number
     currentPage: number
     isFetching: boolean
-    followUser: (userId: string) => void
+    // followUser: (userId: string) => void
     setTotalUserCount: (count: number) => void
     setUsers: (users: Array<UserType>) => void
     setCurrentPage: (page: number) => void
     toggleIsFetching: (isFetching: boolean) => void
+    // toggleUserIsFetching: (isUserFetching: boolean, userId: string) => void
+    isUserFetching: Array<string>
+    getUsersThunkCreator: (currentPage: number, pageSize: number) => void
+    followThunkCreator: (userId: string, followed: boolean) => void
 }
 
-// CLASS COMPONENT
+//CLASS COMPONENT
 export class UsersAPIContainer extends React.Component<UserProps, any> {
     // constructor(props: UserProps) {
     //     super(props);
@@ -29,14 +34,15 @@ export class UsersAPIContainer extends React.Component<UserProps, any> {
 
 
     componentDidMount() {
-        this.props.toggleIsFetching(true)
-
-        // console.log(location, navigate)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`, {withCredentials: true}).then(response => {
-            this.props.setTotalUserCount(response.data.totalCount)
-            this.props.setUsers(response.data.items)
-            this.props.toggleIsFetching(false)
-        })
+        this.props.getUsersThunkCreator(1, 10)
+        // this.props.toggleIsFetching(true)
+        //
+        // // console.log(location, navigate)
+        // usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
+        //     this.props.setTotalUserCount(data.totalCount)
+        //     this.props.setUsers(data.items)
+        //     this.props.toggleIsFetching(false)
+        // })
 
     }
 
@@ -44,14 +50,13 @@ export class UsersAPIContainer extends React.Component<UserProps, any> {
         console.log('fetching')
         this.props.toggleIsFetching(true)
         this.props.setCurrentPage(pageNumber)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`, {withCredentials: true}).then(response => {
-            this.props.setUsers(response.data.items)
+        usersAPI.getUsers(pageNumber, this.props.pageSize).then(data => {
+            this.props.setUsers(data.items)
             this.props.toggleIsFetching(false)
         })
 
     }
 
-    // localComponent = ComponentWithRouter6Router()
 
     render() {
         return <>
@@ -59,30 +64,39 @@ export class UsersAPIContainer extends React.Component<UserProps, any> {
 
             <Users users={this.props.users} totalUsersCount={this.props.totalUsersCount} pageSize={this.props.pageSize}
                    currentPage={this.props.currentPage}
-                   followUser={this.props.followUser} onPageChanged={this.onPageChanged} toggleIsFetching={this.props.toggleIsFetching}/>
+
+                   onPageChanged={this.onPageChanged}
+
+                   isUserFetching={this.props.isUserFetching}
+                   followThunkCreator={this.props.followThunkCreator}/>
 
         </>
     }
 }
 
 
-// STATE CONNECT
+//STATE CONNECT
 let mapStateToProps = (state: StateType) => {
     return {
         users: state.usersPage.users,
         pageSize: state.usersPage.pageSize,
         totalUsersCount: state.usersPage.totalUsersCount,
         currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching
+        isFetching: state.usersPage.isFetching,
+        isUserFetching: state.usersPage.isUserFetching
     }
 }
-// SMART SYNTAX TO DISPATCH
+//SMART SYNTAX TO DISPATCH
 let mapDispatchToProps = {
-    followUser,
+    // followUser,
     setTotalUserCount,
     setUsers,
     setCurrentPage,
-    toggleIsFetching
+    toggleIsFetching,
+    // toggleUserIsFetching,
+    //thunk creators
+    getUsersThunkCreator,
+    followThunkCreator
 }
 //OBVIOUS SYNTAX TO DISPATCH
 // let mapDispatchToProps = (dispatch: (action: UsersPageActionType) => void) => {

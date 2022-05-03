@@ -1,9 +1,8 @@
 import React from "react";
 import css from "./Users.module.css"
-import {UserType} from "../../../redux/reduxStore";
+import {UserType} from "../../../redux/usersReducer";
 import userDefaultPhoto from "./../../../assets/userPhoto.png"
 import {NavLink} from "react-router-dom";
-import axios from "axios";
 
 
 type UsersProps = {
@@ -11,9 +10,12 @@ type UsersProps = {
     pageSize: number
     totalUsersCount: number
     currentPage: number
-    followUser: (userId: string) => void
+    // followUser: (userId: string) => void
     onPageChanged: (pageNumber: number) => void
-    toggleIsFetching: (isFetching: boolean) => void
+    // toggleIsFetching: (isFetching: boolean) => void
+    // toggleUserIsFetching: (isUserFetching: boolean, userId: string) => void
+    isUserFetching: Array<string>
+    followThunkCreator: (userId: string, followed: boolean) => void
 }
 
 
@@ -49,47 +51,10 @@ export function Users(props: UsersProps) {
                         <img src={user.photos.small === null ? userDefaultPhoto : user.photos.small}
                              alt="user"/>
                     </NavLink>
-                    {user.followed
-                        ? <button onClick={() => {
-
-                            axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, {
-                                withCredentials: true, headers: {
-                                    "API-KEY": "48169160-cec4-4970-9d28-0ecb4c6641d9"
-                                }
-                            }).then(response => {
-                                if (response.data.resultCode === 0) {
-                                    props.followUser(user.id)
-
-                                }
-                                // this.props.setTotalUserCount(response.data.totalCount)
-                                // this.props.setUsers(response.data.items)
-                                // this.props.toggleIsFetching(false)
-                            })
-
-                        }
-                        }>'UNFOLLOW'</button>
-                        : <button onClick={() => {
-
-                            axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, {}
-                                , {
-                                    withCredentials: true
-                                    , headers: {
-                                        "API-KEY": "48169160-cec4-4970-9d28-0ecb4c6641d9"
-                                    }
-                                }).then(response => {
-                                if (response.data.resultCode === 0) {
-                                    props.followUser(user.id)
-
-                                }
-                                // this.props.setTotalUserCount(response.data.totalCount)
-                                // this.props.setUsers(response.data.items)
-                                // this.props.toggleIsFetching(false)
-                            })
-
-                        }
-                        }>'FOLLOW'</button>}
-
-
+                    <button disabled={props.isUserFetching.some(id => id === user.id)}
+                            onClick={() => props.followThunkCreator(user.id, user.followed)}>
+                        {user.followed ? "UNFOLLOW" : "FOLLOW"}
+                    </button>
                 </div>
 
                 <div>{user.name} {user.status} </div>
