@@ -1,4 +1,5 @@
 import React from "react";
+import {Routes, Route, Navigate} from 'react-router-dom';
 import {connect} from "react-redux";
 import {followThunkCreator, getUsersThunkCreator, UserType} from "../../../redux/usersReducer";
 import {usersAPI} from "../../../api/api";
@@ -24,6 +25,7 @@ type UserProps = {
     isUserFetching: Array<string>
     getUsersThunkCreator: (currentPage: number, pageSize: number) => void
     followThunkCreator: (userId: string, followed: boolean) => void
+    isAuth: boolean
 }
 
 //CLASS COMPONENT
@@ -59,6 +61,7 @@ export class UsersAPIContainer extends React.Component<UserProps, any> {
 
 
     render() {
+        if (!this.props.isAuth) return <Routes><Route path="*" element={<Navigate to={'/login'}/>}/></Routes>
         return <>
             <Preloader isFetching={this.props.isFetching}/>
 
@@ -83,7 +86,8 @@ let mapStateToProps = (state: StateType) => {
         totalUsersCount: state.usersPage.totalUsersCount,
         currentPage: state.usersPage.currentPage,
         isFetching: state.usersPage.isFetching,
-        isUserFetching: state.usersPage.isUserFetching
+        isUserFetching: state.usersPage.isUserFetching,
+        isAuth: state.auth.isAuth
     }
 }
 //SMART SYNTAX TO DISPATCH

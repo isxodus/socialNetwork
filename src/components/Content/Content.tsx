@@ -5,6 +5,7 @@ import {Route, Routes, Navigate} from 'react-router-dom';
 import {ConversationsContainer} from "./Conversations/ConversationsContainer";
 import {UsersContainer} from "./Users/UsersContainer";
 import {ProfileContainerWithRouter} from "./Profile/ProfileContainer";
+import {LoginPage} from "./Login/Login";
 
 // type ContentType = {
 //     data: StateType
@@ -27,6 +28,8 @@ export function Content() {
                    element={<ConversationsContainer/>}/>
             <Route path="/users/*"
                    element={<UsersContainer/>}/>
+            <Route path="/login/*"
+                   element={<LoginPage isAuth={true}/>}/>
         </Routes>
     </div>
 }
