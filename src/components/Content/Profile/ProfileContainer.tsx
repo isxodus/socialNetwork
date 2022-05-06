@@ -5,6 +5,7 @@ import axios from "axios";
 import {addPost, onPostChangeHandler, setProfile} from "../../../redux/profilePageReducer";
 import {Profile} from "./Profile";
 import {withRouter, WithRouterType} from "../../../componentsUniversal/withRouter/withRouter";
+import {withAuthRedirectHOC} from "../../../componentsUniversal/withAuthRedirectHOC/withAuthRedirectHOC";
 
 
 // CLASS COMPONENT TYPE
@@ -50,13 +51,13 @@ export class ProfileAPIContainer extends React.Component<ProfileProps> {
 // STATE CONNECT
 let mapStateToProps = (state: StateType) => {
     return {
-        data: state.profilePage
+        data: state.profilePage,
     }
 }
 // DISPATCH CONNECT
 let mapDispatchToProps = {addPost, onPostChangeHandler, setProfile}
 
 //
-
-export const ProfileContainer = connect(mapStateToProps, mapDispatchToProps)(ProfileAPIContainer)
-export const ProfileContainerWithRouter = withRouter(ProfileContainer)
+export const ProfileContainerWithAuth = withAuthRedirectHOC(ProfileAPIContainer)
+export const ProfileContainerWithConnect = connect(mapStateToProps, mapDispatchToProps)(ProfileContainerWithAuth)
+export const ProfileContainerWithRouter = withRouter(ProfileContainerWithConnect)
