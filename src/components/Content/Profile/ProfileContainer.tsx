@@ -6,9 +6,10 @@ import {addPost, onPostChangeHandler, setProfile} from "../../../redux/profilePa
 import {Profile} from "./Profile";
 import {withRouter, WithRouterType} from "../../../componentsUniversal/withRouter/withRouter";
 import {withAuthRedirectHOC} from "../../../componentsUniversal/withAuthRedirectHOC/withAuthRedirectHOC";
+import {compose} from "redux";
 
 
-// CLASS COMPONENT TYPE
+//CLASS COMPONENT TYPE
 type ProfileProps = {
     router: WithRouterType
     data: ProfilePageType
@@ -17,8 +18,8 @@ type ProfileProps = {
     setProfile: (profileInfo: ProfileInfoType) => void
 }
 
-// CLASS COMPONENT
-export class ProfileAPIContainer extends React.Component<ProfileProps> {
+//CLASS COMPONENT
+class ProfileAPIContainer extends React.Component<ProfileProps> {
     // constructor(props: UserProps) {
     //     super(props);
     // }
@@ -48,16 +49,21 @@ export class ProfileAPIContainer extends React.Component<ProfileProps> {
 }
 
 
-// STATE CONNECT
+//STATE CONNECT
 let mapStateToProps = (state: StateType) => {
     return {
         data: state.profilePage,
     }
 }
-// DISPATCH CONNECT
+//DISPATCH CONNECT
 let mapDispatchToProps = {addPost, onPostChangeHandler, setProfile}
 
-//
-export const ProfileContainerWithAuth = withAuthRedirectHOC(ProfileAPIContainer)
-export const ProfileContainerWithConnect = connect(mapStateToProps, mapDispatchToProps)(ProfileContainerWithAuth)
-export const ProfileContainerWithRouter = withRouter(ProfileContainerWithConnect)
+//COMPOSE
+export const ProfileContainer = compose(
+    withRouter,
+    connect(mapStateToProps, mapDispatchToProps),
+    withAuthRedirectHOC
+)(ProfileAPIContainer)
+// export const ProfileContainerWithAuth = withAuthRedirectHOC(ProfileAPIContainer)
+// export const ProfileContainerWithConnect = connect(mapStateToProps, mapDispatchToProps)(ProfileContainerWithAuth)
+// export const ProfileContainerWithRouter = withRouter(ProfileContainerWithConnect)

@@ -4,7 +4,7 @@ import {Route, Routes, Navigate} from 'react-router-dom';
 // import {PostAndMessageActionType, StateType} from "../../redux/reduxStore";
 import {ConversationsContainer} from "./Conversations/ConversationsContainer";
 import {UsersContainer} from "./Users/UsersContainer";
-import {ProfileContainerWithRouter} from "./Profile/ProfileContainer";
+import {ProfileContainer} from "./Profile/ProfileContainer";
 import {LoginPage} from "./Login/Login";
 
 // type ContentType = {
@@ -20,7 +20,7 @@ export function Content() {
     return <div>
         <Routes>
             <Route path='/profile' element={<Navigate to={'/profile/2'}/>}/>
-            <Route path="/profile/:userId" element={<ProfileContainerWithRouter/>}/>
+            <Route path="/profile/:userId" element={<ProfileContainer/>}/>
             {/*<Route path="/profile/*"*/}
             {/*       element={<Profile data={props.data.profilePage}*/}
             {/*                         dispatch={props.dispatch}/>}/>*/}
