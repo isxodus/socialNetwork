@@ -1,0 +1,32 @@
+.inputArea {
+    display: grid;
+}
+
+.btn0 {
+    grid-template-columns: 1fr;
+}
+
+.btn1 {
+    grid-template-columns: 1fr 40px;
+}
+
+.btn2input {
+    grid-template-columns: 1fr 80px;
+}
+
+.btn2textarea {
+    grid-template-columns: 1fr 40px;
+}
+
+.buttonArea {
+
+}
+
+.buttonAreaBtn2textarea {
+    display: grid;
+    grid-template-rows: 40px 40px;
+}
+
+.cancelButton {
+    grid-row: 1/2;
+}

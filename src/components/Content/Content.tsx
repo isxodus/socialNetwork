@@ -19,7 +19,7 @@ export function Content() {
 
     return <div>
         <Routes>
-            <Route path='/profile' element={<Navigate to={'/profile/2'}/>}/>
+            <Route path='/profile' element={<Navigate to={'/profile/23478'}/>}/>
             <Route path="/profile/:userId" element={<ProfileContainer/>}/>
             {/*<Route path="/profile/*"*/}
             {/*       element={<Profile data={props.data.profilePage}*/}
@@ -28,8 +28,8 @@ export function Content() {
                    element={<ConversationsContainer/>}/>
             <Route path="/users/*"
                    element={<UsersContainer/>}/>
-            <Route path="/login/*"
-                   element={<LoginPage isAuth={true}/>}/>
+            {/*<Route path="/login/*"*/}
+            {/*       element={<LoginPage isAuth={true}/>}/>*/}
         </Routes>
     </div>
 }

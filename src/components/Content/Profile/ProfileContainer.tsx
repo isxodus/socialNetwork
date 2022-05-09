@@ -1,8 +1,14 @@
 import React from "react";
 import {connect} from "react-redux";
-import {ProfileInfoType, ProfilePageType, StateType} from "../../../redux/reduxStore";
-import axios from "axios";
-import {addPost, onPostChangeHandler, setProfile} from "../../../redux/profilePageReducer";
+import {StateType} from "../../../redux/reduxStore";
+import {
+    addPost,
+    getProfileThunkCreator,
+    getUserStatusThunkCreator,
+    onPostChangeHandler,
+    ProfilePageType,
+    updateUserStatusThunkCreator
+} from "../../../redux/profilePageReducer";
 import {Profile} from "./Profile";
 import {withRouter, WithRouterType} from "../../../componentsUniversal/withRouter/withRouter";
 import {withAuthRedirectHOC} from "../../../componentsUniversal/withAuthRedirectHOC/withAuthRedirectHOC";
@@ -15,7 +21,11 @@ type ProfileProps = {
     data: ProfilePageType
     addPost: () => void
     onPostChangeHandler: (newText: string) => void
-    setProfile: (profileInfo: ProfileInfoType) => void
+
+    //THUNK
+    getProfileThunkCreator: (userId: string) => void
+    getUserStatusThunkCreator: (userId: string) => void
+    updateUserStatusThunkCreator: (status: string) => void
 }
 
 //CLASS COMPONENT
@@ -25,12 +35,13 @@ class ProfileAPIContainer extends React.Component<ProfileProps> {
     // }
 
     componentDidMount() {
-
         const userId = this.props.router.params['userId'] ? this.props.router.params['userId'] : '2'
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId).then(response => {
-            this.props.setProfile(response.data)
-        })
+        this.props.getProfileThunkCreator(userId)
+        this.props.getUserStatusThunkCreator(userId)
+    }
 
+    componentDidUpdate(prevProps: Readonly<ProfileProps>, prevState: Readonly<{}>, snapshot?: any) {
+        console.log('didUpdate')
     }
 
     onPageChanged = () => {
@@ -44,7 +55,9 @@ class ProfileAPIContainer extends React.Component<ProfileProps> {
     }
 
     render() {
-        return <Profile data={this.props.data} addPost={addPost} onPostChangeHandler={onPostChangeHandler}/>
+        //console.log(this.props)
+        return <Profile data={this.props.data} addPost={addPost} onPostChangeHandler={onPostChangeHandler}
+                        updateUserStatusThunkCreator={this.props.updateUserStatusThunkCreator}/>
     }
 }
 
@@ -56,7 +69,8 @@ let mapStateToProps = (state: StateType) => {
     }
 }
 //DISPATCH CONNECT
-let mapDispatchToProps = {addPost, onPostChangeHandler, setProfile}
+let mapDispatchToProps = {addPost, onPostChangeHandler, getProfileThunkCreator, getUserStatusThunkCreator, updateUserStatusThunkCreator}
+
 
 //COMPOSE
 export const ProfileContainer = compose(

@@ -49,7 +49,6 @@ export class UsersAPIContainer extends React.Component<UserProps, any> {
     }
 
     onPageChanged = (pageNumber: number) => {
-        console.log('fetching')
         this.props.toggleIsFetching(true)
         this.props.setCurrentPage(pageNumber)
         usersAPI.getUsers(pageNumber, this.props.pageSize).then(data => {

@@ -1,20 +1,21 @@
 import React from "react";
 // import css from "./Profile.module.css";
-import {ProfileHeader} from "./ProfileInfo/ProfileHeader";
+import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
 import {MyPostsContainerWithRouter} from "./MyPosts/MyPostsContainer";
-import {ProfilePageType} from "../../../redux/reduxStore";
+import {ProfilePageType} from "../../../redux/profilePageReducer";
 
 type ProfileType = {
     data: ProfilePageType
     addPost: () => void
     onPostChangeHandler: (newText: string) => void
+    updateUserStatusThunkCreator: (status: string) => void
 }
 
 
 export function Profile(props: ProfileType) {
 
     return <div>
-        <ProfileHeader data={props.data.profileInfo}/>
+        <ProfileInfo data={props.data.profileInfo} status={props.data.status} updateUserStatusThunkCreator={props.updateUserStatusThunkCreator}/>
         <MyPostsContainerWithRouter/>
     </div>
 }

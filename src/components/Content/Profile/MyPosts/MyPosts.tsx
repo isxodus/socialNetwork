@@ -1,8 +1,8 @@
 import React, {ChangeEvent} from "react";
 import css from "./MyPosts.module.css";
 import {Post} from "./Post/Post";
-import {ProfileMyPostArrayType, ProfileMyPostType} from "../../../../redux/reduxStore";
 import {UniversalInputArea} from "../../../../componentsUniversal/UniversalInputArea/UniversalInputArea";
+import {ProfileMyPostArrayType, ProfileMyPostType} from "../../../../redux/profilePageReducer";
 
 type MyPostsPostPropsType = {
     posts: Array<ProfileMyPostType>
@@ -15,9 +15,9 @@ type MyPostsPostPropsType = {
 export function MyPosts(props: MyPostsPostPropsType) {
     return <div className={css.myPosts}>
         <div>
-            <UniversalInputArea type={'input'} createNewEntityFunction={props.addNewPost} buttonText={"superAdd"}
+            <UniversalInputArea type={'input'} onEntityFunction={props.addNewPost} addButtonText={"superAdd"}
                                 placeholder={"standard phrase"}/>
-            <UniversalInputArea type={'textarea'} createNewEntityFunction={props.addNewPost}
+            <UniversalInputArea type={'textarea'} onEntityFunction={props.addNewPost}
                                 placeholders={['type smth cool', 'this app rocks', 'try new post']}/>
             <div>
                 <button onClick={props.addPost}>add text</button>

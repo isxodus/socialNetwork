@@ -1,6 +1,6 @@
 import {ChangeEvent} from "react";
-import {PostAndMessageActionType, StateType} from "../../../../redux/reduxStore";
-import {addPost, addPost2, onPostChangeHandler} from "../../../../redux/profilePageReducer";
+import {StateType} from "../../../../redux/reduxStore";
+import {addPost, addPost2, onPostChangeHandler, PostAndMessageActionType} from "../../../../redux/profilePageReducer";
 import {MyPosts} from "./MyPosts";
 import {connect} from "react-redux";
 import {withRouter} from "../../../../componentsUniversal/withRouter/withRouter";

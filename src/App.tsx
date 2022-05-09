@@ -2,8 +2,9 @@ import React from 'react';
 import "./App.css"
 import {NavBar} from "./components/NavBar/NavBar";
 import {Content} from "./components/Content/Content";
-import {PostAndMessageActionType, StateType} from "./redux/reduxStore";
+import {StateType} from "./redux/reduxStore";
 import {HeaderContainerWithRouter} from "./components/Header/HeaderContainer";
+import {PostAndMessageActionType} from "./redux/profilePageReducer";
 
 type AppType = {
     data: StateType

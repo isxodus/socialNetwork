@@ -1,6 +1,6 @@
-import {combineReducers, createStore, applyMiddleware} from "redux";
+import {applyMiddleware, combineReducers, createStore} from "redux";
 import thunkMiddleware from "redux-thunk"
-import {profilePageReducer} from "./profilePageReducer";
+import {profilePageReducer, ProfilePageType} from "./profilePageReducer";
 import {conversationsPageReducer} from "./conversationsPageReducer";
 import {usersPageReducer, UsersPageType} from "./usersReducer";
 import {authReducer, AuthStateType} from "./authReducer";
@@ -30,54 +30,7 @@ export type StateType = {
     usersPage: UsersPageType
     auth: AuthStateType
 }
-//ACTION TYPES
-export type PostAndMessageActionType = {
-    type: "ADD-POST" | 'ADD-POST2' | "CHANGE-POST-TEXT" | "ADD-MESSAGE" | "CHANGE-MESSAGE-TEXT" | 'SET-PROFILE'
-    addPostText?: string
-    newText?: string
-    profileInfo?: ProfileInfoType
-}
 
-
-//Profile Page
-export type ProfilePageType = {
-    profileInfo: ProfileInfoType
-    currentProfile: number
-    profilePosts: ProfileMyPostArrayType
-}
-export type ProfileInfoType = {
-    aboutMe: string | null
-    lookingForAJob: boolean | null
-    lookingForAJobDescription: string | null
-    fullName: string | null
-    userId: number | null
-    contacts: ProfileContactsType
-    photos: ProfilePhotosType
-}
-export type ProfileContactsType = {
-    facebook: string | null
-    website: string | null
-    vk: string | null
-    twitter: string | null
-    instagram: string | null
-    youtube: string | null
-    github: string | null
-    mainLink: string | null
-}
-export type ProfilePhotosType = {
-    small: string | null
-    large: string | null
-}
-export type ProfileMyPostArrayType = {
-    profilePosts: Array<ProfileMyPostType>
-    newPostText: string
-    // profileAddPost: () => void
-    // profileChangePostHandler: (editedText: string) => void
-}
-export type ProfileMyPostType = {
-    id: number
-    text: string
-}
 
 //Conversation types
 export type ConversationsPageType = {

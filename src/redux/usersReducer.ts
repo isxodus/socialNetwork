@@ -62,7 +62,6 @@ let initialReducerState: UsersPageType = {
 export const usersPageReducer = (reducerState: UsersPageType = initialReducerState, action: UsersPageActionType): UsersPageType => {
     switch (action.type) {
         case 'TOGGLE_IS_FETCHING':
-            console.log('fetching in reducer')
             return {...reducerState, isFetching: action.isFetching ? action.isFetching : false}
         case 'TOGGLE_FOLLOW':
             return {

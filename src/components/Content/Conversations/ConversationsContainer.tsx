@@ -1,8 +1,9 @@
 import {ChangeEvent} from "react";
-import {PostAndMessageActionType, StateType} from "../../../redux/reduxStore";
+import {StateType} from "../../../redux/reduxStore";
 import {connect} from "react-redux";
 import {addMessageActionCreator, onMessageChangeHandlerActionCreator} from "../../../redux/conversationsPageReducer";
 import {Conversations} from "./Conversations";
+import {PostAndMessageActionType} from "../../../redux/profilePageReducer";
 
 
 let mapStateToProps = (state: StateType) => {

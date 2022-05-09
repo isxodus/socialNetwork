@@ -1,4 +1,5 @@
-import {PostAndMessageActionType, ConversationsPageType, MessageType} from "./reduxStore";
+import {ConversationsPageType, MessageType} from "./reduxStore";
+import {PostAndMessageActionType} from "./profilePageReducer";
 
 // STATE
 let initialReducerState: ConversationsPageType = {
